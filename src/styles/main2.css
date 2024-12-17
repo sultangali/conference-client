@@ -1,0 +1,50 @@
+
+.main-page-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+h1 {
+    
+    font-size: 4rem;
+    font-weight: 900;
+    margin: 0;
+
+}
+
+    h1 span {
+    font-weight: bolder;
+    background:  #1565C0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+}
+
+
+.main-btn:hover {
+    background-color: #42A5F5;
+    box-shadow: 1px 1px 24px 8px;
+}
+
+.navbarr {
+    /* background-color: #6fd2db64; */
+    color: #90cdff;
+}
+
+.auth-btn {
+    background-color: #2196F3;
+}
