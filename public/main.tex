@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}
+
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage[english, russian]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{natbib}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+
+\geometry{
+    margin=1in,
+    headheight=12pt
+}
+\setcitestyle{square}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancyhead[L]{\small Актуальные вопросы междисциплинарных научных исследований}
+\fancyhead[R]{\small\thepage}
+\fancyfoot[C]{\small Караганда, 2025}
+
+\titleformat{\section}
+    {\normalfont\large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}
+    {0pt}{2.5ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\makeatletter
+\renewcommand{\maketitle}{%
+    \begin{center}
+        \Large\@title
+        
+        \vspace{0.4cm}
+        \large\@author
+        
+        \vspace{0.5cm}
+        \normalsize\textit{\textsuperscript{1}Название университета, город, страна\\
+          E-mail: test@example.com\\
+          \textsuperscript{2}Название университета, город, страна\\
+          E-mail: test@example.com\\
+          \textsuperscript{3}Название университета, город, страна\\
+          E-mail: test@example.com\\}
+    \end{center}
+}
+\makeatother
+
+% Paper info
+\title{НАЗВАНИЕ ВАШЕГО ТЕЗИСА}
+
+% Uncomment and update the following line upon acceptance
+% \author{Author Name(s)\\ % Institution Name(s)}
+
+%Comment the following line upon acceptance
+\author{Автор-корреспондент\textsuperscript{1}, Второй автор\textsuperscript{2}, Третий автор\textsuperscript{3}}
+
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+С этого момента начитается текст вашего тезиса...
+
+Шаблон используется для форматирования вашего тезиса и оформления текста. Все поля, ширина колонок, межстрочные интервалы и шрифты текста предписаны; пожалуйста, не изменяйте их.
+
+Прежде чем начать форматировать свою тезис, сначала напишите и сохраните содержимое в виде отдельного текстового файла. Не используйте жесткие табуляции и ограничьте использование жестких возвратов только одним возвратом в конце абзаца. Не добавляйте никакой нумерации страниц в любом месте тезиса. 
+
+\textbf{Авторы и аффилированность:}
+Шаблон разработан таким образом, чтобы принадлежность автора не повторялась каждый раз для нескольких авторов одной и той же принадлежности. Пожалуйста, сохраняйте вашу принадлежность как можно более краткой (например, не делайте различий между отделами одной и той же организации).
+
+\textbf{Правила оформления математических формул:}
+Нумеруйте уравнения последовательно, указывая номера уравнений в скобках вровень с правым полем, как в~(\ref{Eq_1}). Чтобы сделать уравнения более компактными, можно использовать косую черту ( / ), функцию exp или соответствующие показатели степени. Выделяйте курсивом римские символы для величин и переменных, но не греческие символы. Используйте короткое тире (--) вместо дефиса для знака минус. Используйте скобки, чтобы избежать двусмысленности в знаменателях. 
+\begin{equation}
+\label{Eq_1}
+\lambda_i = \lim \frac{1}{p} \sum_{t=1}^p \ln \frac{|w_i (t)|}{|w_i (t-1)|}
+\end{equation}
+
+Пожалуйста, установите в Microsoft Equation следующие шрифты: Regular~--- 12~pt, Large index~--- 7~pt, Small index~--- 5~pt, Large symbol~--- 18~pt, Small Symbol~--- 12~pt.
+
+Обратите внимание, что уравнение центрируется с помощью центральной табуляции. Убедитесь, что символы в вашем уравнении определены до или сразу после уравнения. Используйте ``~(\ref{Eq_1})'', а не ``Eq.~(\ref{Eq_1})''или ``equation~(\ref{Eq_1})'', за исключением начала предложения:
+``Equation~(\ref{Eq_1}) is \ldots{}''.
+
+\textbf{Правила оформления ссылок:}
+Нумеруйте цитаты последовательно в квадратных скобках \cite{1}. Пунктуация предложения следует за скобками\cite{1}. Просто ссылайтесь на номер ссылки, как в\cite{2}. Не используйте ``Ref.\cite{3}'' или ``reference\cite{3}'', за исключением начала предложения: ``Reference\cite{4} was the first \ldots{}''
+
+Грамматически их можно рассматривать как номера сносок, например, как показано Адян Сергей\cite{2}; как упоминалось ранее\cite{1, 2, 3, 4, 5}; Линдон и Шепп\cite{5}; Кузнецов и др\cite{4}.
+
+\textbf{Благодарности:}
+Заголовки «Ссылки» и «Благодарности» не нумеруются. Это просто основные заголовки без меток, независимо от того, пронумерованы ли другие заголовки в статьях.
+Размещение «Благодарности» происходит после окончательного текста статьи, непосредственно перед разделом «Ссылки» и после любого(их) Приложения(й).
+
+\begin{thebibliography}{00}\label{ref:ref}
+\bibitem{1}
+Горюшкин А. П., Амальгамированные свободные произведения групп, ДВФУ, Владивосток, 2012, 158 с.
+\bibitem{2}
+Адян С. И., “Алгоритмическая неразрешимость проблем распознавания некоторых свойств групп”, Докл. АН СССР, 103:4 (1955), 533–535.
+\bibitem{3}
+Goryushkin A. P., “Imbedding of countable groups in 2-generated simple groups”, Mathematical Notes, 16:2 (1974), 725–727.
+\bibitem{4}
+Кузнецов А. В., “Алгоритмы как операции в алгебраических системах”, УМН, 13:3 (1958), 240–241.
+\bibitem{5}
+Линдон Р., Шупп П., Комбинаторная теория групп, Мир, М., 1980, 448 с.
+\end{thebibliography}
+\end{document}
+
+
+
