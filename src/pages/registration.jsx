@@ -11,12 +11,11 @@ import { Step1, Step2, Step3, Step4, Step5, Step6 } from '../components/steps/in
 
 const Registration = () => {
 
-  const navigate = useNavigate()
-
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
   const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
   const [validationErrors, setValidationErrors] = useState({})
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
@@ -111,6 +110,7 @@ const Registration = () => {
   // === Отправка формы ===
   const handleSubmitForm = async () => {
     try {
+      setLoading(true); // Включаем спиннер перед отправкой
       const response = await dispatch(fetchRegister(formData));
 
       if (response?.payload?.token) {
@@ -118,14 +118,16 @@ const Registration = () => {
         localStorage.setItem("token", response.payload.token);
         window.location.assign("/profile");
       } else {
-        setErrorMessage(response?.payload?.message || "Ошибка регистрации");
+        setErrorMessage(response?.payload?.message || t('errors.registrationFailed'));
       }
-
     } catch (err) {
       console.error(err);
       setErrorMessage(t('errors.registrationFailed'));
+    } finally {
+      setLoading(false); // Отключаем спиннер после завершения запроса
     }
   };
+
 
   if (isAuth) return <Navigate to="/profile" />;
 
@@ -145,20 +147,18 @@ const Registration = () => {
           <Container>
             <Row className='d-flex col justify-content-center'>
               <Col md={4}>
-              {errorMessage && 
-                <Alert
-                  variant={errorMessage ? "danger" : "primary"}
-                  style={errorMessage ? { borderColor: "red", borderRadius: '0' } : { borderRadius: "0" }}>
-                  <div className="text-center" style={{ margin: "-12px" }}>
-                     <span>{errorMessage}</span>
-                  </div>
-                </Alert>
-              }
+                {errorMessage &&
+                  <Alert
+                    variant={errorMessage ? "danger" : "primary"}
+                    style={errorMessage ? { borderColor: "red", borderRadius: '0' } : { borderRadius: "0" }}>
+                    <div className="text-center" style={{ margin: "-12px" }}>
+                      <span>{errorMessage}</span>
+                    </div>
+                  </Alert>
+                }
               </Col>
             </Row>
           </Container>
-
-
           {stepsComponents[currentStep]}
           <div style={{ marginTop: '20px' }} className="d-flex justify-content-between">
             <Button variant="secondary" onClick={handleBack} style={{
@@ -166,12 +166,27 @@ const Registration = () => {
               borderRadius: '0px',
               color: '#098cf7'
             }} disabled={currentStep === 0} >{t('registration.buttons.back')}</Button>
-            <Button variant="primary" style={{
-              border: '1px solid #098cf7',
-              borderRadius: '0px',
-              color: 'white',
-              backgroundColor: '#098cf7'
-            }} onClick={handleNext}>{currentStep === labels.length - 1 ? t('registration.buttons.submit') : t('buttons.next')}</Button>
+
+            <Button
+              variant="primary"
+              style={{
+                border: '1px solid #098cf7',
+                borderRadius: '0px',
+                color: 'white',
+                backgroundColor: '#098cf7'
+              }}
+              onClick={handleNext}
+              disabled={loading} // Блокируем кнопку во время загрузки
+            >
+              {loading ? (
+                <>
+                  <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  {" "}&nbsp;&nbsp;{t('registration.buttons.submit')}
+                </>
+              ) : (
+                currentStep === labels.length - 1 ? t('registration.buttons.submit') : t('buttons.next')
+              )}
+            </Button>
           </div>
         </Col>
       </Row>

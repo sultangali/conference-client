@@ -1,290 +1,296 @@
 {
- "header": {
-  "moderator": "Moderator",
-  "arrow": "Goal",
-  "criterion": "Criterion",
-  "format": "Conference format",
-  "napravlenia": "Directions",
-  "commited": "Program committee",
-  "participate": "Participants",
-  "authorization": "Authorization",
-  "profile": "Profile",
-  "logout": "Logout",
-  "language": "Language"
-},"main": {
-  "view1": {
-    "conference_title": "INTERNATIONAL SCIENTIFIC CONFERENCE",
-    "conference_subtitle": "dedicated to the 100th anniversary of academician E.A. Buketov 'Current Issues of Interdisciplinary Scientific Research'",
-    "conference_date": "June 18-19, 2025",
-    "conference_location": "Karaganda, Universitetskaya Street, 28a",
-    "register_button": "Register"
+  "header": {
+    "moderator": "Moderator",
+    "arrow": "Goal",
+    "criterion": "Requirements",
+    "format": "Conference format",
+    "napravlenia": "Directions",
+    "commited": "Program committee",
+    "participate": "Participants",
+    "authorization": "Authorization",
+    "profile": "Profile",
+    "logout": "Logout",
+    "language": "Language"
   },
-  "view2": {
-    "title1": "Conference Objective",
-    "p1": "Karaganda University named after academician E.A. Buketov invites you to participate in the International Scientific Conference dedicated to the 100th anniversary of academician E.A. Buketov, which will be held on June 18-19, 2025. The goal of the conference is to create a platform for interdisciplinary collaboration among scientists from various fields, aimed at solving pressing scientific problems using mathematical and computer modeling.",
-    "p2": "The conference will consist of two stages:",
-    "ul": {
-      "li1": "Preliminary work with problems – scientists from the natural sciences present problems requiring mathematical modeling. These problems are then passed on to the mathematical community for solutions.",
-      "li2": "Plenary sessions and sectional discussions – scientists who proposed the problems and mathematicians who developed solutions meet at the conference to discuss results and future steps in detail."
+  "main": {
+    "view1": {
+      "conference_title": "INTERNATIONAL SCIENTIFIC CONFERENCE",
+      "conference_subtitle": "dedicated to the 100th anniversary of academician E.A. Buketov 'Current Issues of Interdisciplinary Scientific Research'",
+      "conference_date": "June 18-19, 2025",
+      "conference_location": "Karaganda, Universitetskaya Street, 28a",
+      "register_button": "Register"
     },
-    "title2": "Target Audience",
-    "card": {
-      "1": "Researchers and scientists in natural sciences",
-      "2": "Students, master's students, and doctoral candidates",
-      "3": "Higher education faculty",
-      "4": "Representatives of scientific organizations and enterprises"
-    }
-  },
-  "view3": {
-    "title": "Conference Format",
-    "cards": {
-      "1": {
-        "h": "Plenary Lectures by Leading Scientists",
-        "p": "Plenary lectures provide a unique opportunity to learn about the work of recognized leaders in science. These lectures discuss cutting-edge research, innovative methodologies, and significant discoveries that influence the development of specific fields."
+    "view2": {
+      "title1": "Conference Objective",
+      "p1": "Karaganda University named after academician E.A. Buketov invites you to participate in the International Scientific Conference dedicated to the 100th anniversary of academician E.A. Buketov, which will be held on June 18-19, 2025. The goal of the conference is to create a platform for interdisciplinary collaboration among scientists from various fields, aimed at solving pressing scientific problems using mathematical and computer modeling.",
+      "p2": "The conference will consist of two stages:",
+      "ul": {
+        "li1": "Preliminary work with problems – scientists from the natural sciences present problems requiring mathematical modeling. These problems are then passed on to the mathematical community for solutions.",
+        "li2": "Plenary sessions and sectional discussions – scientists who proposed the problems and mathematicians who developed solutions meet at the conference to discuss results and future steps in detail."
       },
-      "2": {
-        "h": "Oral Presentations and Poster Sessions",
-        "p": "Oral presentations allow participants to showcase their research findings in structured presentations, while poster sessions provide a visual platform for research project demonstrations."
+      "title2": "Target Audience",
+      "card": {
+        "1": "Researchers and scientists in natural sciences",
+        "2": "Students, master's students, and doctoral candidates",
+        "3": "Higher education faculty",
+        "4": "Representatives of scientific organizations and enterprises"
+      }
+    },
+    "view3": {
+      "title": "Conference Format",
+      "cards": {
+        "1": {
+          "h": "Plenary Lectures by Leading Scientists",
+          "p": "Plenary lectures provide a unique opportunity to learn about the work of recognized leaders in science. These lectures discuss cutting-edge research, innovative methodologies, and significant discoveries that influence the development of specific fields."
+        },
+        "2": {
+          "h": "Oral Presentations and Poster Sessions",
+          "p": "Oral presentations allow participants to showcase their research findings in structured presentations, while poster sessions provide a visual platform for research project demonstrations."
+        },
+        "3": {
+          "h": "Scientific Achievements Exhibition",
+          "p": "The exhibition of scientific achievements showcases the practical applications of research results and cutting-edge technologies developed by scientists and research teams."
+        }
+      }
+    },
+    "view4": {
+      "title": "Main Areas of the Conference",
+      "card": {
+        "1": "Mathematical modeling (physics, chemistry, biology, economics)",
+        "2": "Current issues in mathematics",
+        "3": "Artificial intelligence and machine learning (data processing, AI applications)",
+        "4": "Applied mechanics and robotics",
+        "5": "Teaching methodology for natural sciences",
+        "6": "Problems of translating scientific terminology"
+      }
+    },
+    "view5": {
+      "orgcommittee": {
+        "title": "Conference Program Committee",
+        "chairman": "Chairman",
+        "chairman_name": "Nurlan Orynbasaruly Dulatbekov, Chairman of the Board – Rector of Karaganda University named after academician E.A. Buketov, Professor, Corresponding Member of the National Academy of Sciences of the Republic of Kazakhstan.",
+        "cochairs": "Co-Chairs",
+        "cochairs_list": {
+          "1": "Murat Ibraevich Ramazanov, Professor, Karaganda University named after academician E.A. Buketov (Kazakhstan).",
+          "2": "Aibat Rafkhatovich Eshkeev, Professor, Karaganda University named after academician E.A. Buketov (Kazakhstan)."
+        },
+        "committee_members": "Program Committee Members",
+        "members_list": {
+          "1": "Avcar M., Professor, Suleyman Demirel University (Turkey).",
+          "2": "A.T. Asanova, Professor (Kazakhstan).",
+          "3": "Zh.Zh. Baigunchekov, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
+          "4": "M.I. Baikenov, Professor (Kazakhstan).",
+          "5": "K.A. Bekmagambetov, Professor (Kazakhstan).",
+          "6": "N.A. Bokaev, Professor (Kazakhstan).",
+          "7": "N.I. Buketova, Professor (Kazakhstan).",
+          "8": "N.I. Vatin, Professor, Saint Petersburg Polytechnic University (Russia).",
+          "9": "M.T. Dzhenaliev, Professor (Kazakhstan).",
+          "10": "A.S. Dzhuamdildayev, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
+          "11": "A.K. Zeynidenev, Professor (Kazakhstan).",
+          "12": "M.K. Ibraev, Professor (Kazakhstan).",
+          "13": "T.Sh. Kalmenov, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
+          "14": "D.Kh. Kozybayev, Associate Professor (Kazakhstan).",
+          "15": "A.N. Lambekova, Associate Professor (Kazakhstan).",
+          "16": "E.D. Nursultanov, Professor (Kazakhstan).",
+          "17": "V.V. Mityushev, Professor, Cracow University of Technology (Poland).",
+          "18": "R.O. Oynarov, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
+          "19": "M.O. Otelbayev, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
+          "20": "A.V. Pskhu, Professor, Institute of Applied Mathematics and Automation, Kabardino-Balkarian Scientific Center (Russia).",
+          "21": "M.A. Sadybekov, Professor, Corresponding Member of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
+          "22": "K.T. Selezneva, Professor, Higher School of Business, National Louis University (Poland).",
+          "23": "D. Suragan, PhD, Academician of the National Academy of Sciences of Kazakhstan, Nazarbayev University (Kazakhstan).",
+          "24": "B. Torebek, Professor (Kazakhstan).",
+          "25": "S.N. Kharin, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan)."
+        }
+      }
+    },
+    "view6": {
+      "title": "Conference Organizing Committee",
+      "pred": {
+        "nm": "Chairman:",
+        "1": "E.M. Tazhbayev, Board Member, Vice-Rector for Research, Professor at Karaganda University named after academician E.A. Buketov, Corresponding Member of the National Academy of Sciences of Kazakhstan."
       },
-      "3": {
-        "h": "Scientific Achievements Exhibition",
-        "p": "The exhibition of scientific achievements showcases the practical applications of research results and cutting-edge technologies developed by scientists and research teams."
+      "zampred": {
+        "nm": "Vice-Chairmen:",
+        "1": "A.O. Tanin, Dean of the Faculty of Mathematics and Information Technologies, Karaganda University named after academician E.A. Buketov.",
+        "2": "N.T. Orumbayeva, Director of the Institute of Applied Mathematics, Karaganda University named after academician E.A. Buketov."
+      },
+      "chlns": {
+        "title": "Members of the Organizing Committee:",
+        "1": "D.B. Alibiev, Associate Professor.",
+        "2": "S.B. Akhajanov, Professor.",
+        "3": "D.M. Akhmanova, Professor.",
+        "4": "D.R. Beysenova, Associate Professor.",
+        "5": "N.A. Gorbunova, Associate Professor.",
+        "6": "G.A. Yesenbayeva, Associate Professor.",
+        "7": "S.A. Iskakov, Associate Professor.",
+        "8": "G.Sh. Iskakova, Associate Professor.",
+        "9": "A.Sh. Kazhikeneva, Associate Professor.",
+        "10": "D.A. Kazimova, Professor.",
+        "11": "M.T. Kasymetova, Associate Professor.",
+        "12": "A.B. Keldibekova, Associate Professor.",
+        "13": "K.E. Kervenov, Master.",
+        "14": "M.T. Kosmakova, Professor.",
+        "15": "R.A. Kairarov, Associate Professor.",
+        "16": "U.A. Kosybayeva, Professor.",
+        "17": "N.K. Medeubaev, Associate Professor.",
+        "18": "R. Muratkhan, Associate Professor.",
+        "19": "N.M. Musina, Associate Professor.",
+        "20": "N.V. Popova, Associate Professor.",
+        "21": "E.A. Smirnova, Master.",
+        "22": "E.A. Spirina, Associate Professor.",
+        "23": "N.K. Syzdykova, Associate Professor.",
+        "24": "N.S. Tokmagambetov, Associate Professor.",
+        "25": "T.D. Tokmagambetova, Associate Professor.",
+        "26": "Zh.M. Tuleutaeva, Associate Professor.",
+        "27": "M.Zh. Turgumbaev, Associate Professor.",
+        "28": "O.I. Ulbricht, Associate Professor.",
+        "29": "O. Khabidolda, Associate Professor.",
+        "30": "O. Khabidolda, Associate Professor."
+      },
+      "scien": {
+        "title": "Scientific Secretary:",
+        "name": "S.K. Zhumagulova, Associate Professor."
+      },
+      "secretarials": {
+        "title": "Secretariat:",
+        "1": "S.M. Amanbekov, PhD Candidate",
+        "2": "B.B. Zhantasova, PhD Candidate",
+        "3": "G.E. Zhumabekova, Senior Lecturer",
+        "4": "S.K. Zhumagaliev, Master.",
+        "5": "S.S. Kopbalina, PhD Candidate",
+        "6": "A.K. Koshekova, PhD Candidate",
+        "7": "A. Manat, PhD Candidate",
+        "8": "N.S. Seitjan, Master",
+        "9": "I.O. Tungushbaeva, Senior Lecturer",
+        "10": "A.R. Yarulina, Senior Lecturer"
+      }
+    },
+    "footer": {
+      "ul": {
+        "title": "Useful Links",
+        "li1": "Conference Goal",
+        "li2": "Conference Format",
+        "li3": "Main Areas of the Conference",
+        "li4": "Program Committee"
+      },
+      "contact": {
+        "title": "Contacts",
+        "location": "Karaganda, Universitetskaya Street, 28a"
       }
     }
   },
-  "view4": {
-    "title": "Main Areas of the Conference",
-    "card": {
-      "1": "Mathematical modeling (physics, chemistry, biology, economics)",
-      "2": "Current issues in mathematics",
-      "3": "Artificial intelligence and machine learning (data processing, AI applications)",
-      "4": "Applied mechanics and robotics",
-      "5": "Teaching methodology for natural sciences",
-      "6": "Problems of translating scientific terminology"
-    }
-  },
-  "view5": {
-  "orgcommittee": {
-    "title": "Conference Program Committee",
-    "chairman": "Chairman",
-    "chairman_name": "Nurlan Orynbasaruly Dulatbekov, Chairman of the Board – Rector of Karaganda University named after academician E.A. Buketov, Professor, Corresponding Member of the National Academy of Sciences of the Republic of Kazakhstan.",
-    "cochairs": "Co-Chairs",
-    "cochairs_list": {
-      "1": "Murat Ibraevich Ramazanov, Professor, Karaganda University named after academician E.A. Buketov (Kazakhstan).",
-      "2": "Aibat Rafkhatovich Eshkeev, Professor, Karaganda University named after academician E.A. Buketov (Kazakhstan)."
+  "login": {
+    "title": "Log in to the system",
+    "username": {
+      "placeholder": "Enter email or phone number",
+      "error": {
+        "1": "Enter your email or phone number",
+        "2": ""
+      }
     },
-    "committee_members": "Program Committee Members",
-    "members_list": {
-      "1": "Avcar M., Professor, Suleyman Demirel University (Turkey).",
-      "2": "A.T. Asanova, Professor (Kazakhstan).",
-      "3": "Zh.Zh. Baigunchekov, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
-      "4": "M.I. Baikenov, Professor (Kazakhstan).",
-      "5": "K.A. Bekmagambetov, Professor (Kazakhstan).",
-      "6": "N.A. Bokaev, Professor (Kazakhstan).",
-      "7": "N.I. Buketova, Professor (Kazakhstan).",
-      "8": "N.I. Vatin, Professor, Saint Petersburg Polytechnic University (Russia).",
-      "9": "M.T. Dzhenaliev, Professor (Kazakhstan).",
-      "10": "A.S. Dzhuamdildayev, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
-      "11": "A.K. Zeynidenev, Professor (Kazakhstan).",
-      "12": "M.K. Ibraev, Professor (Kazakhstan).",
-      "13": "T.Sh. Kalmenov, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
-      "14": "D.Kh. Kozybayev, Associate Professor (Kazakhstan).",
-      "15": "A.N. Lambekova, Associate Professor (Kazakhstan).",
-      "16": "E.D. Nursultanov, Professor (Kazakhstan).",
-      "17": "V.V. Mityushev, Professor, Cracow University of Technology (Poland).",
-      "18": "R.O. Oynarov, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
-      "19": "M.O. Otelbayev, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
-      "20": "A.V. Pskhu, Professor, Institute of Applied Mathematics and Automation, Kabardino-Balkarian Scientific Center (Russia).",
-      "21": "M.A. Sadybekov, Professor, Corresponding Member of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
-      "22": "K.T. Selezneva, Professor, Higher School of Business, National Louis University (Poland).",
-      "23": "D. Suragan, PhD, Academician of the National Academy of Sciences of Kazakhstan, Nazarbayev University (Kazakhstan).",
-      "24": "B. Torebek, Professor (Kazakhstan).",
-      "25": "S.N. Kharin, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan)."
-    }
-  }
-},"view6": {
-  "title": "Conference Organizing Committee",
-  "pred": {
-    "nm": "Chairman:",
-    "1": "E.M. Tazhbayev, Board Member, Vice-Rector for Research, Professor at Karaganda University named after academician E.A. Buketov, Corresponding Member of the National Academy of Sciences of Kazakhstan."
+    "password": {
+      "placeholder": "Enter password",
+      "error": {
+        "1": "Enter your password",
+        "2": "Password must be between 6 and 16 characters"
+      }
+    },
+    "isfirst": {
+      "p": "First time here?",
+      "link": "Register"
+    },
+    "button": "Log in"
   },
-  "zampred": {
-    "nm": "Vice-Chairmen:",
-    "1": "A.O. Tanin, Dean of the Faculty of Mathematics and Information Technologies, Karaganda University named after academician E.A. Buketov.",
-    "2": "N.T. Orumbayeva, Director of the Institute of Applied Mathematics, Karaganda University named after academician E.A. Buketov."
+  "criterion": {
+    "title": "Requirements for Formatting and Submission of Abstracts",
+    "p1": "Dear conference participants!",
+    "p2": "Please carefully review the formatting requirements before submitting your abstracts. Compliance with these requirements is a mandatory condition for consideration and peer review.",
+    "ul1": {
+      "title": "1. General Requirements",
+      "li1": "Abstracts must be formatted according to the conference template.",
+      "li2": "Files are accepted only in the following formats: TeX (for LaTeX documents) or MS Word (.doc, .docx).",
+      "li3": "The length of the abstract should not exceed 5 pages, including text, figures, tables, and references."
+    },
+    "ul2": {
+      "title": "2. Peer Review Process",
+      "li1": "All submitted abstracts undergo an internal peer review process conducted by the conference program committee.",
+      "li2": "If the materials do not meet the formatting requirements or the necessary scientific level, the organizing committee reserves the right to reject the abstracts or recommend changes to the author.",
+      "li3": "Authors are responsible for the originality of the submitted materials. Texts with a high level of plagiarism without proper citation will not be considered."
+    },
+    "ul3": {
+      "title": "3. Submission Process",
+      "li1": "Abstracts must be uploaded through the participant’s personal account on the conference platform.",
+      "li2": "After submission, authors will receive a notification regarding the review status.",
+      "li3": "If revisions are required, authors will be given a limited time to make changes and re-upload the file."
+    },
+    "download": {
+      "docx": "Download (.doc, .docx)",
+      "tex": "Download (.tex)",
+      "drive": "Template link"
+    },
+    "plast": "The conference organizing committee reserves the right to reject abstracts that do not meet the conference topics, scientific standards, or formatting requirements."
   },
-  "chlns": {
-    "title": "Members of the Organizing Committee:",
-    "1": "D.B. Alibiev, Associate Professor.",
-    "2": "S.B. Akhajanov, Professor.",
-    "3": "D.M. Akhmanova, Professor.",
-    "4": "D.R. Beysenova, Associate Professor.",
-    "5": "N.A. Gorbunova, Associate Professor.",
-    "6": "G.A. Yesenbayeva, Associate Professor.",
-    "7": "S.A. Iskakov, Associate Professor.",
-    "8": "G.Sh. Iskakova, Associate Professor.",
-    "9": "A.Sh. Kazhikeneva, Associate Professor.",
-    "10": "D.A. Kazimova, Professor.",
-    "11": "M.T. Kasymetova, Associate Professor.",
-    "12": "A.B. Keldibekova, Associate Professor.",
-    "13": "K.E. Kervenov, Master.",
-    "14": "M.T. Kosmakova, Professor.",
-    "15": "R.A. Kairarov, Associate Professor.",
-    "16": "U.A. Kosybayeva, Professor.",
-    "17": "N.K. Medeubaev, Associate Professor.",
-    "18": "R. Muratkhan, Associate Professor.",
-    "19": "N.M. Musina, Associate Professor.",
-    "20": "N.V. Popova, Associate Professor.",
-    "21": "E.A. Smirnova, Master.",
-    "22": "E.A. Spirina, Associate Professor.",
-    "23": "N.K. Syzdykova, Associate Professor.",
-    "24": "N.S. Tokmagambetov, Associate Professor.",
-    "25": "T.D. Tokmagambetova, Associate Professor.",
-    "26": "Zh.M. Tuleutaeva, Associate Professor.",
-    "27": "M.Zh. Turgumbaev, Associate Professor.",
-    "28": "O.I. Ulbricht, Associate Professor.",
-    "29": "O. Khabidolda, Associate Professor.",
-    "30": "O. Khabidolda, Associate Professor."
+  "participant": {
+    "title": "Conference Participants",
+    "fio": "Full Name",
+    "location": "Workplace",
+    "position": "Position",
+    "rank": "Academic Rank",
+    "degree": "Academic Degree",
+    "notfound": "No registered participants",
+    "error": "Error"
   },
-  "scien": {
-    "title": "Scientific Secretary:",
-    "name": "S.K. Zhumagulova, Associate Professor."
-  },
-  "secretarials": {
-    "title": "Secretariat:",
-    "1": "S.M. Amanbekov, PhD Candidate",
-    "2": "B.B. Zhantasova, PhD Candidate",
-    "3": "G.E. Zhumabekova, Senior Lecturer",
-    "4": "S.K. Zhumagaliev, Master.",
-    "5": "S.S. Kopbalina, PhD Candidate",
-    "6": "A.K. Koshekova, PhD Candidate",
-    "7": "A. Manat, PhD Candidate",
-    "8": "N.S. Seitjan, Master",
-    "9": "I.O. Tungushbaeva, Senior Lecturer",
-    "10": "A.R. Yarulina, Senior Lecturer"
-  }
-},"footer": {
-  "ul": {
-    "title": "Useful Links",
-    "li1": "Conference Goal",
-    "li2": "Conference Format",
-    "li3": "Main Areas of the Conference",
-    "li4": "Program Committee"
-  },
-  "contact": {
-    "title": "Contacts",
-    "location": "Karaganda, Universitetskaya Street, 28a"
-  }
-}
-
-
-},"login": {
-  "title": "Log in to the system",
-  "username": {
-    "placeholder": "Enter email or phone number",
-    "error": {
-      "1": "Enter your email or phone number",
-      "2": ""
+  "moderator": {
+    "title": "Moderator",
+    "article": {
+      "plname": "Article Title",
+      "plauthorfio": "Author's Full Name",
+      "sections": "All Sections",
+      "statuses": "All Statuses",
+      "name": "Title",
+      "authors": "Authors",
+      "section": "Section",
+      "status": "Status",
+      "unknownauthor": "Unknown",
+      "file": "File",
+      "action": "Actions",
+      "download": "Download",
+      "notfoundfile": "No file"
     }
   },
-  "password": {
-    "placeholder": "Enter password",
-    "error": {
-      "1": "Enter your password",
-      "2": "Password must be between 6 and 16 characters"
-    }
+  "sections": {
+    "mathModeling": "Mathematical Modeling (Physics, Chemistry, Biology, Economics)",
+    "mathProblems": "Current Issues in Mathematics",
+    "aiML": "Artificial Intelligence and Machine Learning (Data Processing, AI Applications)",
+    "mechanicsRobotics": "Applied Mechanics and Robotics",
+    "teachingMethods": "Methods of Teaching Natural Sciences",
+    "translationProblems": "Problems of Translating Scientific Terminology",
+    "socio": "Modeling of socio-economic processes"
   },
-  "isfirst": {
-    "p": "First time here?",
-    "link": "Register"
+  "participation_form": {
+    "online": "online",
+    "offline": "offline",
+    "mixed": "mixed"
   },
-  "button": "Log in"
-},"criterion": {
-  "title": "Requirements for Formatting and Submission of Abstracts",
-  "p1": "Dear conference participants!",
-  "p2": "Please carefully review the formatting requirements before submitting your abstracts. Compliance with these requirements is a mandatory condition for consideration and peer review.",
-  "ul1": {
-    "title": "1. General Requirements",
-    "li1": "Abstracts must be formatted according to the conference template.",
-    "li2": "Files are accepted only in the following formats: TeX (for LaTeX documents) or MS Word (.doc, .docx).",
-    "li3": "The length of the abstract should not exceed 5 pages, including text, figures, tables, and references."
+  "role": {
+    "correspondent": "correspondent",
+    "coauthor": "co-author",
+    "moderator": "moderator"
   },
-  "ul2": {
-    "title": "2. Peer Review Process",
-    "li1": "All submitted abstracts undergo an internal peer review process conducted by the conference program committee.",
-    "li2": "If the materials do not meet the formatting requirements or the necessary scientific level, the organizing committee reserves the right to reject the abstracts or recommend changes to the author.",
-    "li3": "Authors are responsible for the originality of the submitted materials. Texts with a high level of plagiarism without proper citation will not be considered."
-  },
-  "ul3": {
-    "title": "3. Submission Process",
-    "li1": "Abstracts must be uploaded through the participant’s personal account on the conference platform.",
-    "li2": "After submission, authors will receive a notification regarding the review status.",
-    "li3": "If revisions are required, authors will be given a limited time to make changes and re-upload the file."
-  },
-  "download": {
-    "docx": "Download (.doc, .docx)",
-    "tex": "Download (.tex)",
-    "drive": "Template link"
-  },
-  "plast": "The conference organizing committee reserves the right to reject abstracts that do not meet the conference topics, scientific standards, or formatting requirements."
-},"participant": {
-  "title": "Conference Participants",
-  "fio": "Full Name",
-  "location": "Workplace",
-  "position": "Position",
-  "rank": "Academic Rank",
-  "degree": "Academic Degree",
-  "notfound": "No registered participants",
-  "error": "Error"
-},
-"moderator": {
-  "title": "Moderator",
   "article": {
-    "plname": "Article Title",
-    "plauthorfio": "Author's Full Name",
-    "sections": "All Sections",
-    "statuses": "All Statuses",
-    "name": "Title",
-    "authors": "Authors",
-    "section": "Section",
-    "status": "Status",
-    "unknownauthor": "Unknown",
-    "file": "File",
-    "action": "Actions",
-    "download": "Download",
-    "notfoundfile": "No file"
-  }
-},
-"sections": {
-  "mathModeling": "Mathematical Modeling (Physics, Chemistry, Biology, Economics)",
-  "mathProblems": "Current Issues in Mathematics",
-  "aiML": "Artificial Intelligence and Machine Learning (Data Processing, AI Applications)",
-  "mechanicsRobotics": "Applied Mechanics and Robotics",
-  "teachingMethods": "Methods of Teaching Natural Sciences",
-  "translationProblems": "Problems of Translating Scientific Terminology"
-},
-"participation_form": {
-  "online": "online",
-  "offline": "offline",
-  "mixed": "mixed"
-},
-"role": {
-  "correspondent": "correspondent",
-  "coauthor": "co-author",
-  "moderator": "moderator"
-},
-"article": {
-  "status": {
-    "process": "Under Review",
-    "approved": "Approved",
-    "denied": "Rejected",
-    "is": {
-      "process": "Approve",
-      "approved": "Processing",
-      "denied": "Reject"
+    "status": {
+      "process": "Under Review",
+      "approved": "Approved",
+      "denied": "Rejected",
+      "is": {
+        "process": "Approve",
+        "approved": "Processing",
+        "denied": "Reject"
+      }
     }
-  }
-},"registration": {
+  },
+  "registration": {
     "title": "Registration",
     "step": "Step",
     "of": "of",
@@ -331,7 +337,7 @@
         "bachelor": "Bachelor"
       }
     },
-    "step3": { 
+    "step3": {
       "title": "Participation Type Selection",
       "provideProblem": "I provide a problem",
       "solveProblem": "I solve a problem"
@@ -345,7 +351,8 @@
       "confirmPassword": "Confirm Password",
       "agree": "I agree to have my name publicly listed as a conference participant on the website."
     }
-},"validation": {
+  },
+  "validation": {
     "firstName": "Enter your first name",
     "lastName": "Enter your last name",
     "phone": "Enter your phone number",
@@ -366,7 +373,8 @@
     "confirmPassword": "Confirm your password",
     "atleast": "The password must contain at least 6 characters",
     "passwordMatch": "Passwords do not match"
-},"step4": {
+  },
+  "step4": {
     "section": "Section",
     "selectSection": "Select a section",
     "articleTitle": "Article title",
@@ -375,8 +383,8 @@
     "addCoauthor": "Add co-author",
     "attachFile": "Attach document (PDF/DOCX)",
     "fileSelected": "File: "
-},
-"coauthor": {
+  },
+  "coauthor": {
     "lastName": "Last name",
     "firstName": "First name",
     "fatherName": "Middle name",
@@ -385,18 +393,19 @@
     "rank": "Academic rank",
     "degree": "Academic degree",
     "participationForm": "Participation form"
-},
-"actions": "Action",
-"delete": "Delete",
-"select": "-- Select --",
-"positions": {
+  },
+  "actions": "Action",
+  "delete": "Delete",
+  "select": "-- Select --",
+  "positions": {
     "researcher": "Researcher",
     "lecturer": "Lecturer"
-},
-"buttons": {
+  },
+  "buttons": {
     "back": "Back",
     "next": "Next"
-}, "profile": {
+  },
+  "profile": {
     "main": {
       "title": "Basic Information",
       "fio": "Full Name",
@@ -467,13 +476,34 @@
       "currentstep": "Current Step",
       "fornextstep": "Until next step",
       "timelinestages": {
-        "1": { "title": "Problem Submission", "desc": "Scientists submit problems" },
-        "2": { "title": "Solution Development", "desc": "Mathematicians develop solutions" },
-        "3": { "title": "Discussions and Presentations", "desc": "Discussion of results and reports" },
-        "4": { "title": "Conference Closure", "desc": "End of the event" }
+        "1": {
+          "title": "Problem Submission",
+          "desc": "Scientists submit problems"
+        },
+        "2": {
+          "title": "Solution Development",
+          "desc": "Mathematicians develop solutions"
+        },
+        "3": {
+          "title": "Discussions and Presentations",
+          "desc": "Discussion of results and reports"
+        },
+        "4": {
+          "title": "Conference Closure",
+          "desc": "End of the event"
+        }
       }
     }
-}
-
-
+  },
+  "loadarticle": "Upload Article",
+  "choosesection": "Choose a Section",
+  "chooseproblem": "Choose a Problem",
+  "coauthors": "Co-authors",
+  "watch": "View",
+  "createarticle": "Create Article",
+  "verification_alert": {
+    "correspondent": "Your account is not verified. Please verify your email address ({{email}}) by following the instructions in the email sent to you.",
+    "coauthor": "The correspondent's account is not verified. Please inform {{lastname}} {{firstname}} ({{email}}) that email verification is required to activate co-author access."
+  },
+  "allfieldneed": "Fill in all fields"
 }

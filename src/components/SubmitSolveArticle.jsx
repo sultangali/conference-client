@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { createSolveArticle } from "../redux/store.js";
+import { useTranslation } from "react-i18next";
 
 const SubmitSolveArticle = ({ formData }) => {
+  const {t} = useTranslation()
   const dispatch = useDispatch();
   const [status, setStatus] = useState("");
 
   const handleSubmit = async () => {
     if (!formData.articleTitle || !formData.section || !formData.problem || !formData.file) {
-      setStatus("❌ Заполните все поля!");
+      setStatus(t('allfieldneed') + "!");
       return;
     }
 
@@ -40,8 +42,8 @@ const SubmitSolveArticle = ({ formData }) => {
         backgroundColor: '#1168eb',
         padding: '10px 26px',
         color: 'white'
-      }}>Создать статью</Button>
-      {status && <p>{status}</p>}
+      }}>{t('createarticle')}</Button>
+      {status && <p style={{color: 'red'}}>{status}</p>}
     </div>
   );
 };

@@ -19,6 +19,7 @@ import sec3 from '../assets/sec3.png'
 import sec4 from '../assets/sec4.png'
 import sec5 from '../assets/sec5.png'
 import sec6 from '../assets/sec6.png'
+import sec7 from '../assets/sec7.png'
 
 import logo_buketov from '../assets/logo_buketov.png'
 import { useTranslation } from "react-i18next";
@@ -286,6 +287,18 @@ const Main = () => {
                                     </Col>
                                     <Col className="col-12 text-center">
                                         <img src={sec6} style={{ width: '14rem', opacity: '0.8' }} alt="" />
+                                    </Col>
+                                </Row>
+                            </div>
+                        </Col>
+                        <Col lg={4}>
+                            <div className="section-card w-100" style={{ borderLeft: '8px solid purple' }}>
+                                <Row>
+                                    <Col className="col-12 d-flex row align-items-center" style={{ minHeight: '100px' }}>
+                                        <span>{t('sections.socio')}</span>
+                                    </Col>
+                                    <Col className="col-12 text-center">
+                                        <img src={sec7} style={{ width: '14rem', opacity: '0.8' }} alt="" />
                                     </Col>
                                 </Row>
                             </div>

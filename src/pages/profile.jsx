@@ -112,13 +112,15 @@ const Profile = () => {
               <br />
               <Alert variant="danger" style={{ borderRadius: "0" }}>
                 {userData?.role === "correspondent" ? (
-                  <>
-                    Ваш аккаунт не верифицирован. Пожалуйста, подтвердите свою электронную почту
-                    <b>({userData?.email})</b>, следуя инструкциям в отправленном вам письме.
-                  </>
+                  <span dangerouslySetInnerHTML={{ __html: t('verification_alert.correspondent', { email: userData?.email }) }} />
                 ) : userData?.role === "coauthor" && (
-                  <>Учетная запись корреспондента не подтверждена. Пожалуйста, сообщите {userData?.correspondent_data?.lastname}
-                    {userData?.correspondent_data?.firstname} (<b>{userData?.correspondent_data?.email}</b>), что необходимо пройти верификацию почты для активации доступа соавторов.</>
+                  <span dangerouslySetInnerHTML={{
+                    __html: t('verification_alert.coauthor', {
+                      lastname: userData?.correspondent_data?.lastname,
+                      firstname: userData?.correspondent_data?.firstname,
+                      email: userData?.correspondent_data?.email
+                    })
+                  }} />
                 )}
               </Alert>
             </Col>
@@ -265,7 +267,7 @@ function PersonalInfo({ userData }) {
               </tr>
               <tr>
                 <td className="td-title">{t('profile.main.role')}</td>
-                <td>{getRoleName( userData?.role)}</td>
+                <td>{getRoleName(userData?.role)}</td>
               </tr>
             </tbody> :
             <tbody>
@@ -335,17 +337,20 @@ function MyArticle({ userData, role }) {
       case 'section-6':
 
         return t('sections.translationProblems');
+      case 'section-7':
+
+        return t('sections.socio');
     }
   }
 
 
   const getArticleStatus = (articleStatus) => {
-    switch(articleStatus) {
-      case "process": 
+    switch (articleStatus) {
+      case "process":
         return t("article.status.process")
-        case "approved": 
+      case "approved":
         return t("article.status.approved")
-        case "denied": 
+      case "denied":
         return t("article.status.denied")
     }
   }
@@ -378,7 +383,7 @@ function MyArticle({ userData, role }) {
         <h3>{t('profile.article.title')}</h3>
         <br />
         <Alert variant="info" style={{ borderRadius: '0' }}>
-        {t('profile.article.notfound')}
+          {t('profile.article.notfound')}
         </Alert>
         <div style={{ marginBottom: "1rem", fontSize: "1.5rem", fontWeight: "300", color: '#1168eb' }}>
           {timeLeft}
@@ -483,7 +488,7 @@ function MyArticle({ userData, role }) {
               backgroundColor: '#E53935', color: 'white', borderRadius: '12px', padding: '4px 16px'
             } : {
               backgroundColor: '#098cf7', color: 'white', borderRadius: '12px', padding: '4px 16px'
-            }}>{getArticleStatus(article.status) }</span></td>
+            }}>{getArticleStatus(article.status)}</span></td>
           </tr>
           <tr>
             <td className="td-title">{t('profile.article.table.document')}</td>
@@ -504,7 +509,7 @@ function MyArticle({ userData, role }) {
 
 function CoauthorsTab({ userData }) {
 
-  const {t} = useTranslation()
+  const { t } = useTranslation()
 
   if (!userData.coauthors || userData.coauthors.length === 0) {
     return (<div>
@@ -612,21 +617,21 @@ function CoauthorsTab({ userData }) {
 
 const TimelineTab = () => {
 
- 
+
   const [nextDeadline, setNextDeadline] = useState(null);
   const [timeLeft, setTimeLeft] = useState("");
-  const {t, i18n} = useTranslation()
+  const { t, i18n } = useTranslation()
 
-const timelineStages = [
-  { title: t('profile.timeline.timelinestages.1.title'), deadline: "2025-03-15", icon: <ScienceIcon />, description: t('profile.timeline.timelinestages.1.desc') },
-  { title: t('profile.timeline.timelinestages.2.title'), deadline: "2025-06-01", icon: <PeopleIcon />, description: t('profile.timeline.timelinestages.2.desc')  },
-  { title: t('profile.timeline.timelinestages.3.title'), deadline: "2025-06-18", icon: <EventIcon />, description: t('profile.timeline.timelinestages.3.desc')  },
-  { title: t('profile.timeline.timelinestages.4.title'), deadline: "2025-06-20", icon: <CelebrationIcon />, description: t('profile.timeline.timelinestages.4.desc') },
-];
+  const timelineStages = [
+    { title: t('profile.timeline.timelinestages.1.title'), deadline: "2025-03-15", icon: <ScienceIcon />, description: t('profile.timeline.timelinestages.1.desc') },
+    { title: t('profile.timeline.timelinestages.2.title'), deadline: "2025-06-01", icon: <PeopleIcon />, description: t('profile.timeline.timelinestages.2.desc') },
+    { title: t('profile.timeline.timelinestages.3.title'), deadline: "2025-06-18", icon: <EventIcon />, description: t('profile.timeline.timelinestages.3.desc') },
+    { title: t('profile.timeline.timelinestages.4.title'), deadline: "2025-06-20", icon: <CelebrationIcon />, description: t('profile.timeline.timelinestages.4.desc') },
+  ];
 
 
 
-const [currentStage, setCurrentStage] = useState("");
+  const [currentStage, setCurrentStage] = useState("");
 
   useEffect(() => {
     const updateTime = () => {

@@ -110,6 +110,7 @@ export const Step4 = ({ formData, setFormData, validationErrors }) => {
                 <option value="section-4">{t('sections.mechanicsRobotics')}</option>
                 <option value="section-5">{t('sections.teachingMethods')}</option>
                 <option value="section-6">{t('sections.translationProblems')}</option>
+                <option value="section-7">{t('sections.socio')}</option>
               </Form.Select>
               {validationErrors.section && (
                 <div style={{ color: 'red' }}>{validationErrors.section}</div>

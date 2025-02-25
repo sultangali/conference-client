@@ -55,33 +55,31 @@ const UploadArticleForSolver = ({ userData, problems }) => {
         }
     };
 
-    console.log(section, articleTitle, coauthors, problem, file)
-
     const  getPositionName = (posname) => {
         switch (posname) {
             case "researcher": 
-                return t('step2.researcher');
+                return t('registration.step2.posname.researcher');
             case "lecturer": 
-                return t('step2.lecturer');
+                return t('registration.step2.posname.lecturer');
             case "companyRep":
-                return t('step2.companyRep');
+                return t('registration.step2.posname.companyRep');
             case "doctoralStudent":
-                return t('step2.doctoralStudent');
+                return t('registration.step2.posname.doctoralStudent');
             case "mastersStudent":
-                return t('step2.mastersStudent');
+                return t('registration.step2.posname.mastersStudent');
             case "student": 
-                return t('step2.student');
+                return t('registration.step2.posname.student');
             case "otherPosition":
-                return t('step2.other');
+                return t('registration.step2.posname.other');
         }
     }
 
     const getRankName = (rankname) => {
         switch(rank) {
             case "professor":
-                return t('step2.professor');
+                return t('registration.step2.rank.professor');
             case "associateProfessor":
-                return t('step2.associateProfessor')
+                return t('registration.step2.rank.associateProfessor')
             
         }
     }
@@ -89,43 +87,44 @@ const UploadArticleForSolver = ({ userData, problems }) => {
     const getDegreeName = () => {
         switch(degree) {
             case "doctorOfSciences":
-                return t('step2.doctorOfSciences');
+                return t('registration.step2.degree.doctorOfSciences');
             case "candidateOfSciences":
-                return t('step2.candidateOfSciences');
+                return t('registration.step2.degree.candidateOfSciences');
             case "phd":
-                return t('step2.phd');
+                return t('registration.step2.degree.phd');
             case "master":
-                return t('step2.master');
+                return t('registration.step2.degree.master');
             case "bachelor":
-                return t('step2.bachelor');
+                return t('registration.step2.degree.bachelor');
         }
     }
 
     return (
         <Container className="add-problem-article">
-            <h3>Загрузка статьи</h3>
+            <h3>{t('loadarticle')}</h3>
 
             {/* Выбор секции */}
             <Form.Group>
                 <Form.Select className="mt-2" value={section} onChange={(e) => setSection(e.target.value)}>
-                    <option value="">Выберите секцию</option>
+                    <option value="">{t('choosesection')}</option>
                     <option value="section-1">{t('sections.mathModeling')}</option>
                     <option value="section-2">{t('sections.mathProblems')}</option>
                     <option value="section-3">{t('sections.aiML')}</option>
                     <option value="section-4">{t('sections.mechanicsRobotics')}</option>
                     <option value="section-5">{t('sections.teachingMethods')}</option>
                     <option value="section-6">{t('sections.translationProblems')}</option>
+                    <option value="section-7">{t('sections.socio')}</option>
                 </Form.Select>
             </Form.Group>
             
             {/* Ввод названия статьи */}
             <Form.Group>
-                <Form.Control className="mt-2" required type="text" value={articleTitle} onChange={(e) => setArticleTitle(e.target.value)} placeholder="Введите название статьи" />
+                <Form.Control className="mt-2" required type="text" value={articleTitle} onChange={(e) => setArticleTitle(e.target.value)} placeholder={t('step4.enterArticleTitle')} />
             </Form.Group>
             <Form.Group>
                 <Form.Select className="mt-2" value={problem} onChange={(e) => setProblem(e.target.value)}>
                     
-                    <option value="">Выберите проблему</option>
+                    <option value="">{t('chooseproblem')}</option>
                     {
                         problems.length > 0 && (problems.map((prob, i) => (
                             <option value={prob?._id}>{prob.title}</option>
@@ -135,19 +134,19 @@ const UploadArticleForSolver = ({ userData, problems }) => {
             </Form.Group>
             <br />
             {/* Таблица соавторов */}
-            <h3>Соавторы</h3>
+            <h3>{t('coauthors')}</h3>
             <Table striped bordered className=''>
                 <thead>
                     <tr>
-                        <th>Фамилия</th>
-                        <th>Имя</th>
-                        <th>Отчество</th>
-                        <th>Место работы</th>
-                        <th>Должность</th>
-                        <th>Звание</th>
-                        <th>Степень</th>
-                        <th>Участия</th>
-                        <th>Действия</th>
+                        <th>{t('coauthor.lastName')}</th>
+                        <th>{t('coauthor.firstName')}</th>
+                        <th>{t('coauthor.fatherName')}</th>
+                        <th>{t('coauthor.organization')}</th>
+                        <th>{t('coauthor.positiions')}</th>
+                        <th>{t('coauthor.rank')}</th>
+                        <th>{t('coauthor.degree')}</th>
+                        <th>{t('coauthor.participationForm')}</th>
+                        <th>{t('coauthor.actions')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -162,13 +161,13 @@ const UploadArticleForSolver = ({ userData, problems }) => {
                                     value={coauthor.evwe}
                                     onChange={(e) => handleCoauthorChange(index, 'position', e.target.value)}>
                                     <option value="">-- {t('select')} --</option>
-                                    <option value="researcher">{t('step2.researcher')}</option>
-                                    <option value="lecturer">{t('step2.lecturer')}</option>
-                                    <option value="companyRep">{t('step2.companyRep')}</option>
-                                    <option value="doctoralStudent">{t('step2.doctoralStudent')}</option>
-                                    <option value="mastersStudent">{t('step2.mastersStudent')}</option>
-                                    <option value="student">{t('step2.student')}</option>
-                                    <option value="otherPosition">{t('step2.other')}</option>
+                                    <option value="researcher">{t('registration.step2.positions.researcher')}</option>
+                                    <option value="lecturer">{t('registration.step2.positions.lecturer')}</option>
+                                    <option value="companyRep">{t('registration.step2.positions.companyRep')}</option>
+                                    <option value="doctoralStudent">{t('registration.step2.positions.doctoralStudent')}</option>
+                                    <option value="mastersStudent">{t('registration.step2.positions.mastersStudent')}</option>
+                                    <option value="student">{t('registration.step2.positions.student')}</option>
+                                    <option value="otherPosition">{t('registration.step2.positions.other')}</option>
                                 </Form.Select>
                             </td>
                             <td >
@@ -176,8 +175,8 @@ const UploadArticleForSolver = ({ userData, problems }) => {
                                     value={coauthor.rank}
                                     onChange={(e) => handleCoauthorChange(index, 'rank', e.target.value)}>
                                     <option value="">-- {t('select')} --</option>
-                                    <option value="professor">{t('step2.professor')}</option>
-                                    <option value="associateProfessor">{t('step2.associateProfessor')}</option>
+                                    <option value="professor">{t('registration.step2.rank.professor')}</option>
+                                    <option value="associateProfessor">{t('registration.step2.rank.associateProfessor')}</option>
                                     <option value="-">-</option>
                                 </Form.Select>
                             </td>
@@ -186,11 +185,11 @@ const UploadArticleForSolver = ({ userData, problems }) => {
                                     value={coauthor.degree}
                                     onChange={(e) => handleCoauthorChange(index, 'degree', e.target.value)}>
                                     <option value="">-- {t('select')} --</option>
-                                    <option value="doctorOfSciences">{t('step2.doctorOfSciences')}</option>
-                                    <option value="candidateOfSciences">{t('step2.candidateOfSciences')}</option>
-                                    <option value="phd">{t('step2.phd')}</option>
-                                    <option value="master">{t('step2.master')}</option>
-                                    <option value="bachelor">{t('step2.bachelor')}</option>
+                                    <option value="doctorOfSciences">{t('registration.step2.degree.doctorOfSciences')}</option>
+                                    <option value="candidateOfSciences">{t('registration.step2.degree.candidateOfSciences')}</option>
+                                    <option value="phd">{t('registration.step2.degree.phd')}</option>
+                                    <option value="master">{t('registration.step2.degree.master')}</option>
+                                    <option value="bachelor">{t('registration.step2.degree.bachelor')}</option>
                                     <option value="-">-</option>
                                 </Form.Select>
                             </td>
@@ -199,9 +198,9 @@ const UploadArticleForSolver = ({ userData, problems }) => {
                                     value={coauthor.participationForm}
                                     onChange={(e) => handleCoauthorChange(index, 'participationForm', e.target.value)}>
                                     <option value="">-- {t('select')} --</option>
-                                    <option value="online">{t('participation.online')}</option>
-                                    <option value="offline">{t('participation.offline')}</option>
-                                    <option value="mixed">{t('participation.mixed')}</option>
+                                    <option value="online">{t('participation_form.online')}</option>
+                                    <option value="offline">{t('participation_form.offline')}</option>
+                                    <option value="mixed">{t('participation_form.mixed')}</option>
                                 </Form.Select>
                             </td>
                             <td>
@@ -226,7 +225,7 @@ const UploadArticleForSolver = ({ userData, problems }) => {
             {file && (
                 <span style={{ color: 'green', marginTop: '5px' }}>
                   {file &&  
-                  <span>{t('step4.fileSelected')} <a href={`http://localhost:5000${file}`}>Посмотреть</a>  
+                  <span>{t('step4.fileSelected')} <a href={`http://localhost:5000${file}`}>{t('watch')}</a>  
                   </span> }
                 </span>
               )}

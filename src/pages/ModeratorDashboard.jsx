@@ -29,8 +29,9 @@ export const ModeratorDashboard = () => {
 
         return t('sections.teachingMethods');
       case 'section-6':
-
         return t('sections.translationProblems');
+      case 'section-7':
+        return t('sections.socio');
     }
   }
 
@@ -134,12 +135,12 @@ export const ModeratorDashboard = () => {
   }
 
   const getArticleStatus = (articleStatus) => {
-    switch(articleStatus) {
-      case "process": 
+    switch (articleStatus) {
+      case "process":
         return t("article.status.process")
-        case "approved": 
+      case "approved":
         return t("article.status.approved")
-        case "denied": 
+      case "denied":
         return t("article.status.denied")
     }
   }
@@ -182,6 +183,7 @@ export const ModeratorDashboard = () => {
           <option value="section-4">{t('sections.mechanicsRobotics')}</option>
           <option value="section-5">{t('sections.teachingMethods')}</option>
           <option value="section-6">{t('sections.translationProblems')}</option>
+          <option value="section-7">{t('sections.socio')}</option>
         </Form.Select>
         <Form.Select value={selectedStatus} style={{
           borderRadius: '0'
@@ -208,8 +210,8 @@ export const ModeratorDashboard = () => {
           <tbody>
             {filteredArticles.map((article) => (
               <tr key={article._id}>
-                <td className="align-middle" style={{width: 'auto'}}>{article.title}</td>
-                <td className="align-middle" style={{width: '200px'}}>
+                <td className="align-middle" style={{ width: 'auto' }}>{article.title}</td>
+                <td className="align-middle" style={{ width: '200px' }}>
                   {article.correspondent ? (
                     <>
                       {article.correspondent.lastname} {article.correspondent.firstname}
@@ -220,14 +222,14 @@ export const ModeratorDashboard = () => {
                   ) : t('moderator.article.unknownauthor')}
                 </td>
 
-                <td className="align-middle" style={{width: '200px'}}>{sectionName(article.section)}</td>
+                <td className="align-middle" style={{ width: '200px' }}>{sectionName(article.section)}</td>
                 <td style={article?.status == "approved" ? {
                   backgroundColor: '#43A047', color: 'white'
                 } : article?.status == "denied" ? {
                   backgroundColor: '#E53935', color: 'white'
                 } : {
                   backgroundColor: '#098cf7', color: 'white'
-                }} className="text-center align-middle">{getArticleStatus(article.status) }</td>
+                }} className="text-center align-middle">{getArticleStatus(article.status)}</td>
                 <td className="align-middle text-center">{article.file_url ? <a href={`http://localhost:5000${article.file_url}`} download>{t('moderator.article.download')}</a> : t('moderator.article.notfoundfile')}</td>
                 <td className="text-end">
                   <button className="btn btn-mdtr1 "
@@ -235,10 +237,10 @@ export const ModeratorDashboard = () => {
                     {t("article.status.is.approved")}
                   </button>{' '}
                   <button className="btn btn-mdtr2" onClick={() => updateArticleStatus(article._id, "process")} >
-                  {t("article.status.is.process")}
+                    {t("article.status.is.process")}
                   </button>{' '}
                   <button className=" btn btn-mdtr3" onClick={() => updateArticleStatus(article._id, "denied")}>
-                  {t("article.status.is.denied")}
+                    {t("article.status.is.denied")}
                   </button>
                 </td>
               </tr>

@@ -20,12 +20,14 @@ export const ParticipantList = () => {
                 paddingTop: '24px',
                 paddingBottom: '8rem',
                 backgroundRepeat: 'repeat',
-                backgroundSize: 'cover',
-                background: `url(${largeTriangles2})`
+                backgroundSize: 'cover'
+                 ,background: `url(${largeTriangles2})`
             }}>
-            <Container className="participants" style={ participants?.length < 20 && {
-                height: '90vh'
-            }}>
+            <Container className="participants" 
+            // style={ participants?.length < 20 && {
+            //     height: '90vh'
+            // }}
+            >
                 <Row>
                     <Col className="participants-list"  md={12}>
                         <h3 className="mb-4">{t('participant.title')}</h3>
