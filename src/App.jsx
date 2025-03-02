@@ -28,6 +28,8 @@ function App() {
         <Route path="/participants" element={<><components.Header /><pages.ParticipantList /></>} />
         <Route path="/moderator" element={<><components.Header /><pages.ModeratorDashboard /></>} />
         <Route path="/criterion" element={<><components.Header /><pages.Criterion /></>} />
+        <Route path="/details" element={<><components.Header /><pages.Details /></>} />
+        <Route path="/sponsors" element={<><components.Header /><pages.Sponsors /></>} />
       </Routes>
     </>
   )

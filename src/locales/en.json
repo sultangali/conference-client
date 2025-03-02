@@ -10,19 +10,21 @@
     "authorization": "Authorization",
     "profile": "Profile",
     "logout": "Logout",
-    "language": "Language"
+    "language": "Language",
+    "details": "Payment method",
+    "sponsors": "Sponsors"
   },
   "main": {
     "view1": {
       "conference_title": "INTERNATIONAL SCIENTIFIC CONFERENCE",
       "conference_subtitle": "dedicated to the 100th anniversary of academician E.A. Buketov 'Current Issues of Interdisciplinary Scientific Research'",
-      "conference_date": "June 18-19, 2025",
+      "conference_date": "June 17-20, 2025",
       "conference_location": "Karaganda, Universitetskaya Street, 28a",
       "register_button": "Register"
     },
     "view2": {
       "title1": "Conference Objective",
-      "p1": "Karaganda University named after academician E.A. Buketov invites you to participate in the International Scientific Conference dedicated to the 100th anniversary of academician E.A. Buketov, which will be held on June 18-19, 2025. The goal of the conference is to create a platform for interdisciplinary collaboration among scientists from various fields, aimed at solving pressing scientific problems using mathematical and computer modeling.",
+      "p1": "Karaganda University named after academician E.A. Buketov invites you to participate in the International Scientific Conference dedicated to the 100th anniversary of academician E.A. Buketov, which will be held on June 17-20, 2025. The goal of the conference is to create a platform for interdisciplinary collaboration among scientists from various fields, aimed at solving pressing scientific problems using mathematical and computer modeling.",
       "p2": "The conference will consist of two stages:",
       "ul": {
         "li1": "Preliminary work with problems – scientists from the natural sciences present problems requiring mathematical modeling. These problems are then passed on to the mathematical community for solutions.",
@@ -50,6 +52,9 @@
         "3": {
           "h": "Scientific Achievements Exhibition",
           "p": "The exhibition of scientific achievements showcases the practical applications of research results and cutting-edge technologies developed by scientists and research teams."
+        },
+        "4": {
+          "p": "Selected participant reports will be recommended for publication in the Bulletin of the Karaganda University. Mathematics Series, which is indexed in the Web of Science and Scopus databases."
         }
       }
     },
@@ -68,7 +73,7 @@
       "orgcommittee": {
         "title": "Conference Program Committee",
         "chairman": "Chairman",
-        "chairman_name": "Nurlan Orynbasaruly Dulatbekov, Chairman of the Board – Rector of Karaganda University named after academician E.A. Buketov, Professor, Corresponding Member of the National Academy of Sciences of the Republic of Kazakhstan.",
+        "chairman_name": "Nurlan Orynbasaruly Dulatbekov, Chairman of the Board – Rector of Karaganda University named after academician E.A. Buketov, Professor, Academician of the National Academy of Sciences of the Republic of Kazakhstan.",
         "cochairs": "Co-Chairs",
         "cochairs_list": {
           "1": "Murat Ibraevich Ramazanov, Professor, Karaganda University named after academician E.A. Buketov (Kazakhstan).",
@@ -96,11 +101,15 @@
           "18": "R.O. Oynarov, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
           "19": "M.O. Otelbayev, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
           "20": "A.V. Pskhu, Professor, Institute of Applied Mathematics and Automation, Kabardino-Balkarian Scientific Center (Russia).",
-          "21": "M.A. Sadybekov, Professor, Corresponding Member of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
-          "22": "K.T. Selezneva, Professor, Higher School of Business, National Louis University (Poland).",
-          "23": "D. Suragan, PhD, Academician of the National Academy of Sciences of Kazakhstan, Nazarbayev University (Kazakhstan).",
-          "24": "B. Torebek, Professor (Kazakhstan).",
-          "25": "S.N. Kharin, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan)."
+          "21": "Rakhmetova R.U., Professor (Kazakhstan)",
+          "22": "Sagintayeva S.S., Professor (Kazakhstan).",
+          "23": "M.A. Sadybekov, Professor, Corresponding Member of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
+          "24": "K.T. Selezneva, Professor, Higher School of Business, National Louis University (Poland).",
+          "25": "D. Suragan, PhD, Academician of the National Academy of Sciences of Kazakhstan, Nazarbayev University (Kazakhstan).",
+          "26": "Tautenov Y.I., Deputy Chairman of the Board of JSC «Institute for Economic Research» (Kazakhstan).",
+          "27": "B. Torebek, Professor (Kazakhstan).",
+          "28": "S.N. Kharin, Academician of the National Academy of Sciences of Kazakhstan (Kazakhstan).",
+          "29": "Yuldashev T.K., Professor (Uzbekistan)."
         }
       }
     },
@@ -108,12 +117,13 @@
       "title": "Conference Organizing Committee",
       "pred": {
         "nm": "Chairman:",
-        "1": "E.M. Tazhbayev, Board Member, Vice-Rector for Research, Professor at Karaganda University named after academician E.A. Buketov, Corresponding Member of the National Academy of Sciences of Kazakhstan."
+        "1": "E.M. Tazhbayev, Board Member, Vice-Rector for Research, Professor at Karaganda University named after academician E.A. Buketov, Academician of the National Academy of Sciences of Kazakhstan."
       },
       "zampred": {
         "nm": "Vice-Chairmen:",
         "1": "A.O. Tanin, Dean of the Faculty of Mathematics and Information Technologies, Karaganda University named after academician E.A. Buketov.",
-        "2": "N.T. Orumbayeva, Director of the Institute of Applied Mathematics, Karaganda University named after academician E.A. Buketov."
+        "2": "N.T. Orumbayeva, Director of the Institute of Applied Mathematics, Karaganda University named after academician E.A. Buketov.",
+        "3": ""
       },
       "chlns": {
         "title": "Members of the Organizing Committee:",
@@ -145,11 +155,10 @@
         "26": "Zh.M. Tuleutaeva, Associate Professor.",
         "27": "M.Zh. Turgumbaev, Associate Professor.",
         "28": "O.I. Ulbricht, Associate Professor.",
-        "29": "O. Khabidolda, Associate Professor.",
-        "30": "O. Khabidolda, Associate Professor."
+        "29": "O. Khabidolda, Associate Professor."
       },
       "scien": {
-        "title": "Scientific Secretary:",
+        "title": "Conference Secretary:",
         "name": "S.K. Zhumagulova, Associate Professor."
       },
       "secretarials": {
@@ -422,7 +431,8 @@
       "personal": "Basic Information",
       "article": "My Article",
       "coauthors": "Co-authors",
-      "timeline": "Timeline"
+      "timeline": "Timeline",
+      "accommodation": "Accommodation"
     },
     "error": "Error: ",
     "isdeadline": "Deadline has passed!",
@@ -505,5 +515,37 @@
     "correspondent": "Your account is not verified. Please verify your email address ({{email}}) by following the instructions in the email sent to you.",
     "coauthor": "The correspondent's account is not verified. Please inform {{lastname}} {{firstname}} ({{email}}) that email verification is required to activate co-author access."
   },
-  "allfieldneed": "Fill in all fields"
+  "allfieldneed": "Fill in all fields",
+  "details": {
+    "title": "Payment Method",
+    "b1": "Attention!",
+    "p1": "If participants require documents for financial reporting, we kindly ask them to pay the registration fee according to the following details:",
+    "p2": "Details of NJSC 'Karaganda University named after Academician E.A. Buketov'",
+    "p3": "JSC 'Halyk Bank of Kazakhstan'",
+    "p4": "JSC 'Bank CenterCredit'",
+    "b2": "Payment Purpose:",
+    "p5": "Registration fee for participation of Last Name First Name Patronymic in the CIISR2025 conference",
+    "p6": "After making the payment, please send the payment confirmation to ciisr25@gmail.com.",
+    "p7": "Actual address: 010009, Republic of Kazakhstan, Karaganda, Universitetskaya St., 28;",
+    "p8": "NJSC Karaganda University named after E.A. Buketov",
+    "p9": "Faculty of Mathematics and Information Technologies"
+  },
+  "sponsors": {
+    "title": "Sponsors",
+    "p1": "At the moment, there is no information about sponsors. Stay tuned for updates."
+  },
+  "accommodation": {
+    "title": "Accommodation",
+    "p1": "The organizing committee recommends booking a hotel in advance. Below is a list of hotels where you can stay during the conference.",
+    "l1": "- Hotel «Reikartz Dostar»",
+    "l2": "- Hotel «Empire city hotel»",
+    "l3": "- Hotel «Cosmonaut»",
+    "l4": "- Hotel «Voyage»",
+    "l5": "- Hotel «Zumrat»",
+    "l6": "- Hotel complex «La CASA»",
+    "l7": "- Hotel complex «Metelitsa»",
+    "l8": "- Hotel complex «ASTIKA»",
+    "l9": "- Hotel «Senator Hotel»"
+}
+
 }

@@ -21,17 +21,6 @@ import Typography from "@mui/material/Typography";
 import moment from "moment";
 
 
-const importantDates = [
-  { date: "2025-03-15", event: "Конец регистрации (Problem)" },
-  { date: "2025-06-01", event: "Конец регистрации (Solve)" },
-  { date: "2025-06-17", event: "День заезда" },
-  { date: "2025-06-18", event: "Открытие конференции" },
-  { date: "2025-06-19", event: "Закрытие конференции" },
-  { date: "2025-06-20", event: "День отъезда" },
-];
-
-
-
 const Profile = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -104,6 +93,11 @@ const Profile = () => {
                   <Nav.Link className="nav-link" eventKey="timeline">{t("profile.tabs.timeline")}</Nav.Link>
                 </div>
               </Nav.Item>
+              <Nav.Item>
+                <div className="pill-btn">
+                  <Nav.Link className="nav-link" eventKey="accommodation">{t("profile.tabs.accommodation")}</Nav.Link>
+                </div>
+              </Nav.Item>
               {/* )} */}
             </Nav>
           </Col>
@@ -144,7 +138,9 @@ const Profile = () => {
                 <Tab.Pane eventKey="timeline">
                   <TimelineTab userData={userData} />
                 </Tab.Pane>
-
+                <Tab.Pane eventKey="accommodation">
+                  <Accommodation userData={userData} />
+                </Tab.Pane>
               </Tab.Content>
             </Col>
           }
@@ -315,7 +311,7 @@ function MyArticle({ userData, role }) {
   const [timeLeft, setTimeLeft] = useState("");
   const [isTimeLeft, setIsTimeLeft] = useState(false);
   const [showUploadComponent, setShowUploadComponent] = useState(false);
-  const deadline = moment("2025-03-15T00:00:00");
+  const deadline = moment("2025-04-01T00:00:00");
   const { t } = useTranslation();
   const sectionName = (section) => {
     switch (section) {
@@ -366,7 +362,7 @@ function MyArticle({ userData, role }) {
       const diff = moment.duration(deadline.diff(now));
 
       if (diff.asSeconds() <= 0) {
-        setTimeLeft(t('profile.isdeadline'));
+        setTimeLeft('');
         setIsTimeLeft(true)
         clearInterval(interval);
       } else {
@@ -390,7 +386,7 @@ function MyArticle({ userData, role }) {
         </div>
         {userData?.participation_type === "solve" && (
           <>
-            <Button className="button-add" variant="primary" disabled={isTimeLeft} onClick={() => setShowUploadComponent(!showUploadComponent)}>
+            <Button className="button-add" variant="primary" disabled={!isTimeLeft} onClick={() => setShowUploadComponent(!showUploadComponent)}>
               {showUploadComponent ? t('profile.article.hidearticleupload') : t('profile.article.articleupload')}
             </Button>
             {showUploadComponent && <UploadArticleForSolver userData={userData} problems={problems && problems} />}
@@ -623,9 +619,9 @@ const TimelineTab = () => {
   const { t, i18n } = useTranslation()
 
   const timelineStages = [
-    { title: t('profile.timeline.timelinestages.1.title'), deadline: "2025-03-15", icon: <ScienceIcon />, description: t('profile.timeline.timelinestages.1.desc') },
+    { title: t('profile.timeline.timelinestages.1.title'), deadline: "2025-04-01", icon: <ScienceIcon />, description: t('profile.timeline.timelinestages.1.desc') },
     { title: t('profile.timeline.timelinestages.2.title'), deadline: "2025-06-01", icon: <PeopleIcon />, description: t('profile.timeline.timelinestages.2.desc') },
-    { title: t('profile.timeline.timelinestages.3.title'), deadline: "2025-06-18", icon: <EventIcon />, description: t('profile.timeline.timelinestages.3.desc') },
+    { title: t('profile.timeline.timelinestages.3.title'), deadline: "2025-06-17", icon: <EventIcon />, description: t('profile.timeline.timelinestages.3.desc') },
     { title: t('profile.timeline.timelinestages.4.title'), deadline: "2025-06-20", icon: <CelebrationIcon />, description: t('profile.timeline.timelinestages.4.desc') },
   ];
 
@@ -703,6 +699,30 @@ const TimelineTab = () => {
     </Container>
   );
 };
+
+function Accommodation({ userData }) {
+
+  const { t } = useTranslation()
+
+  return (
+    <div>
+      <br />
+      <h3>{t('accommodation.title')}</h3>
+      <br />
+      <p style={{margin: '0', fontWeight: '300'}}>{t('accommodation.p1')}</p>
+      <br />
+      <p style={{margin: '12px', fontWeight: '300'}}>{t('accommodation.l1')}{" "}<a href="https://www.reikartz.kz">www.reikartz.kz</a></p>
+      <p style={{margin: '12px', fontWeight: '300'}}>{t('accommodation.l2')}{" "}<a href="https://empire-city-karaganda.karagandy-hotels.com/ru/">empire-city-karaganda.karagandy-hotels.com/ru/</a></p>
+      <p style={{margin: '12px', fontWeight: '300'}}>{t('accommodation.l3')}{" "}<a href="https://www.cosmonaut.kz">www.cosmonaut.kz</a></p>
+      <p style={{margin: '12px', fontWeight: '300'}}>{t('accommodation.l4')}{" "}<a href="https://otello.ru/hotel/11822477302920342">otello.ru/hotel/11822477302920342</a></p>
+      <p style={{margin: '12px', fontWeight: '300'}}>{t('accommodation.l5')}{" "}<a href="https://otello.ru/hotel/11822477302878942">otello.ru/hotel/11822477302878942</a></p>
+      <p style={{margin: '12px', fontWeight: '300'}}>{t('accommodation.l6')}{" "}<a href="http://"></a></p>
+      <p style={{margin: '12px', fontWeight: '300'}}>{t('accommodation.l7')}{" "}<a href="https://www.metelica-hotel.kz/">www.metelica-hotel.kz</a></p>
+      <p style={{margin: '12px', fontWeight: '300'}}>{t('accommodation.l8')}{" "}<a href="http://"></a></p>
+      <p style={{margin: '12px', fontWeight: '300'}}>{t('accommodation.l9')}{" "}<a href="https://www.hotelsenator.kz">www.hotelsenator.kz</a></p>
+    </div>
+  );
+}
 
 
 export default Profile;

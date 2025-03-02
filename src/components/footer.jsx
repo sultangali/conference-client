@@ -41,9 +41,9 @@ export const Footer = () => {
                                 <li className="icon-lnk" onClick={() => {  window.location.assign('https://www.google.com/maps?ll=49.769837,73.125204&z=16&t=m&hl=ru&gl=KZ&mapclient=embed&q=%D1%83%D0%BB.+%D0%A3%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82%D1%81%D0%BA%D0%B0%D1%8F+28+%D0%9A%D0%B0%D1%80%D0%B0%D0%B3%D0%B0%D0%BD%D0%B4%D0%B0+100000') }}>
                                     <GeoAlt size={24}/>&nbsp; {t('main.footer.contact.location')}</li>
                                 <Row><Col className="col-1"><Telephone size={24}/></Col>
-                                    <Col className="col-auto icon-lnk" onClick={() => {window.location.assign('tel:+77212356412')}}> &nbsp;+ 7 7212 35-64-12</Col><Col className="col-auto icon-lnk" onClick={() => {window.location.assign('tel:+77212908514')}}>+7 7212 908-514</Col></Row>
+                                    <Col className="col-auto icon-lnk" onClick={() => {window.location.assign('tel:+77212356430')}}> &nbsp;+ 7 7212 35-64-30</Col></Row>
                                 <li >   </li>
-                                <li className="icon-lnk" onClick={() => {  window.location.assign('mailto:office@buketov.edu.kz') }}><Envelope size={24}/>&nbsp; office@buketov.edu.kz</li>
+                                <li className="icon-lnk" onClick={() => {  window.location.assign('mailto:mit@buketov.edu.kz') }}><Envelope size={24}/>&nbsp; mit@buketov.edu.kz</li>
                                 <br />
                                 <Row>
                                     <Col className="col-3 text-start"><Instagram className="icon-lnk" onClick={() => { window.location.assign('https://www.instagram.com/buketov.university/') } } size={32}/></Col>

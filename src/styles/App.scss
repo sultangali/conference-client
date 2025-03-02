@@ -532,3 +532,20 @@ $theme-colors: (
 .templ-btn:hover {
   box-shadow: 1px 1px 8px #7ac3ff;
 }
+.moderator {
+  border: 1px solid #E53935;
+  border-radius: 40%;
+  padding: 3px 5px;
+  color:#E53935;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.moderator:hover {
+  border: 1px solid #E53935;
+  border-radius: 40%;
+  padding: 3px 5px;
+  background-color: #E53935;
+  color:white;
+  font-weight: 700;
+}

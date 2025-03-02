@@ -13,7 +13,61 @@ export const ParticipantList = () => {
     useEffect(() => {
         dispatch(fetchParticipants());
     }, [dispatch]);
-
+    const getparticipation_form = (form) => {
+        switch (form) {
+          case 'online':
+            return t('participation_form.online');
+          case 'offline':
+            return t('participation_form.offline');
+          case 'mixed':
+            return t('participation_form.mixed');
+        }
+      }
+    
+      const getPositionName = (posname) => {
+        switch (posname) {
+          case "researcher":
+            return t('registration.step2.positions.researcher');
+          case "lecturer":
+            return t('registration.step2.positions.lecturer');
+          case "companyRep":
+            return t('registration.step2.positions.companyRep');
+          case "doctoralStudent":
+            return t('registration.step2.positions.doctoralStudent');
+          case "mastersStudent":
+            return t('registration.step2.positions.mastersStudent');
+          case "student":
+            return t('registration.step2.positions.student');
+          case "otherPosition":
+            return t('registration.step2.positions.other');
+        }
+      }
+    
+      const getRankName = (rankname) => {
+        switch (rankname) {
+          case "professor":
+            return t('registration.step2.rank.professor');
+          case "associateProfessor":
+            return t('registration.step2.rank.associateProfessor')
+    
+        }
+      }
+    
+      const getDegreeName = (degree) => {
+        switch (degree) {
+          case "doctorOfSciences":
+            return t('registration.step2.degree.doctorOfSciences');
+          case "candidateOfSciences":
+            return t('registration.step2.degree.candidateOfSciences');
+          case "phd":
+            return t('registration.step2.degree.phd');
+          case "master":
+            return t('registration.step2.degree.master');
+          case "bachelor":
+            return t('registration.step2.degree.bachelor');
+        }
+      }
+    
     return (
         <Container fluid className=""
             style={{
@@ -52,9 +106,9 @@ export const ParticipantList = () => {
                                             <td>{index + 1}</td>
                                             <td>{user.lastname} {user.firstname} {user.fathername || ""}</td>
                                             <td>{user.organization}</td>
-                                            <td>{user.position || "—"}</td>
-                                            <td>{user.rank || "—"}</td>
-                                            <td>{user.degree || "—"}</td>
+                                            <td>{getPositionName(user.position)  || "—"}</td>
+                                            <td>{getRankName(user.rank) || "—"}</td>
+                                            <td>{getDegreeName(user.degree)  || "—"}</td>
                                         </tr>
                                     ))}
                                 </tbody>

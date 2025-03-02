@@ -40,11 +40,11 @@ const Main = () => {
                             <span style={{ fontWeight: '300', fontSize: '22px' }}>{t('main.view1.conference_subtitle')}</span>
                             <br />
                             <Row>
-                                
+
                                 <Col md={12} lg={12} xs={12} style={{ margin: '12px auto' }}><Calendar2Check size={42} color="#0D47A1" />&nbsp;&nbsp;{t('main.view1.conference_date')}</Col>
                                 <Col md={12} lg={12} xs={12} style={{ margin: '12px auto' }}><GeoAlt size={42} color="#0D47A1" />&nbsp;&nbsp;{t('main.view1.conference_location')}</Col>
                             </Row>
-                            
+
                             <Button onClick={() => { navigate('/registration'); }} className="main-click-btn">{t('main.view1.register_button')}</Button>
                         </Col>
                     </Row>
@@ -194,6 +194,13 @@ const Main = () => {
                         <Col className="third-section-card text-end" lg={4}>
                             <img src={first_3_333} className="img-fluid" alt="" />
                         </Col>
+                        <Col md={12} lg={12} className="d-flex row align-items-center third1-section-card">
+                            <div>
+                                <br />
+                                <hr />
+                                <p style={{fontSize: '19px'}}>{t('main.view3.cards.4.p')}</p>
+                            </div>
+                        </Col>
                     </Row>
                 </Container>
             </Container>
@@ -338,12 +345,12 @@ const Main = () => {
                             <Row>
                                 <Col md={12}>
                                     <span className="orgcommitt-span">
-                                    {t('main.view5.orgcommittee.cochairs_list.1')}
+                                        {t('main.view5.orgcommittee.cochairs_list.1')}
                                     </span>
                                 </Col>
                                 <Col md={12}>
                                     <span className="orgcommitt-span">
-                                    {t('main.view5.orgcommittee.cochairs_list.2')}
+                                        {t('main.view5.orgcommittee.cochairs_list.2')}
                                     </span>
                                 </Col>
                             </Row>
@@ -430,6 +437,18 @@ const Main = () => {
                                 <Col md={12}>
                                     <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.25')}</span>
                                 </Col>
+                                <Col md={12}>
+                                    <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.26')}</span>
+                                </Col>
+                                <Col md={12}>
+                                    <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.27')}</span>
+                                </Col>
+                                <Col md={12}>
+                                    <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.28')}</span>
+                                </Col>
+                                <Col md={12}>
+                                    <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.29')}</span>
+                                </Col>
                             </Row>
                         </Col>
                     </Row>
@@ -459,7 +478,7 @@ const Main = () => {
                                 <Row style={{ color: 'white' }}>
                                     <Col md={12}>
                                         <span className="orgcommitt-span">
-                                        {t('main.view6.pred.1')}
+                                            {t('main.view6.pred.1')}
                                         </span>
                                     </Col>
                                 </Row>
