@@ -435,7 +435,7 @@ function MyArticle({ userData, role }) {
                         <td>{authorsList.join(", ")}</td> {/* ✅ Выводим всех авторов через запятую */}
                         <td>
                           {problem.file_url ? (
-                            <a href={`http://localhost:5000${problem.file_url}`} download>{t('profile.article.table.download')}</a>
+                            <a href={`https://conference.buketov.edu.kz${problem.file_url}`} download>{t('profile.article.table.download')}</a>
                           ) : t('profile.article.table.filenotfound')}
                         </td>
                       </tr>
@@ -490,7 +490,7 @@ function MyArticle({ userData, role }) {
             <td className="td-title">{t('profile.article.table.document')}</td>
             <td>
               {article.file_url ? (
-                <a href={`http://localhost:5000${article.file_url}`} download>{t('profile.article.table.download')}</a>
+                <a href={`https://conference.buketov.edu.kz${article.file_url}`} download>{t('profile.article.table.download')}</a>
               ) : t('profile.article.table.notdownloaded')}
             </td>
           </tr>

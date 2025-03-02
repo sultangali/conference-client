@@ -93,7 +93,7 @@ export const Header = () => {
                   <Nav.Link href="/profile" className="d-flex col align-items-center">
                       <Button className="btn btn-light go-to-profile-btn" >{t('header.profile')}</Button>
                       {/* {userData && `${userData?.firstname?.substring(0, 1)}.${userData?.fathername?.substring(0, 1)}.${userData?.lastname}`}
-                      &nbsp;<img src={`http://localhost:5000${userData?.avatar}`} style={{ borderRadius: '50%', width: '3rem' }} alt="" /> */}
+                      &nbsp;<img src={`https://conference.buketov.edu.kz${userData?.avatar}`} style={{ borderRadius: '50%', width: '3rem' }} alt="" /> */}
                     </Nav.Link>
                   &nbsp;
                   <Nav.Link

@@ -254,7 +254,7 @@ export const Step4 = ({ formData, setFormData, validationErrors }) => {
               {file && (
                 <span style={{ color: 'green', marginTop: '5px' }}>
                   {formData?.articleFile &&
-                    <span>{t('step4.fileSelected')} <a href={`http://localhost:5000${formData?.articleFile}`}>Посмотреть</a>
+                    <span>{t('step4.fileSelected')} <a href={`https://conference.buketov.edu.kz${formData?.articleFile}`}>Посмотреть</a>
                     </span>}
                 </span>
               )}

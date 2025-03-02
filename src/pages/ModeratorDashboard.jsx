@@ -230,7 +230,7 @@ export const ModeratorDashboard = () => {
                 } : {
                   backgroundColor: '#098cf7', color: 'white'
                 }} className="text-center align-middle">{getArticleStatus(article.status)}</td>
-                <td className="align-middle text-center">{article.file_url ? <a href={`http://localhost:5000${article.file_url}`} download>{t('moderator.article.download')}</a> : t('moderator.article.notfoundfile')}</td>
+                <td className="align-middle text-center">{article.file_url ? <a href={`https://conference.buketov.edu.kz${article.file_url}`} download>{t('moderator.article.download')}</a> : t('moderator.article.notfoundfile')}</td>
                 <td className="text-end">
                   <button className="btn btn-mdtr1 "
                     onClick={() => updateArticleStatus(article._id, "approved")}>

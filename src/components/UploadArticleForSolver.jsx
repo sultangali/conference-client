@@ -225,7 +225,7 @@ const UploadArticleForSolver = ({ userData, problems }) => {
             {file && (
                 <span style={{ color: 'green', marginTop: '5px' }}>
                   {file &&  
-                  <span>{t('step4.fileSelected')} <a href={`http://localhost:5000${file}`}>{t('watch')}</a>  
+                  <span>{t('step4.fileSelected')} <a href={`https://conference.buketov.edu.kz${file}`}>{t('watch')}</a>  
                   </span> }
                 </span>
               )}
