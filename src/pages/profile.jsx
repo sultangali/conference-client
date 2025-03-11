@@ -318,22 +318,22 @@ function MyArticle({ userData, role }) {
       case 'section-1':
 
         return t('sections.mathModeling');
-      case 'section-2':
-
-        return t('sections.mathProblems');
       case 'section-3':
 
-        return t('sections.aiML');
+        return t('sections.mathProblems');
       case 'section-4':
 
-        return t('sections.mechanicsRobotics');
+        return t('sections.aiML');
       case 'section-5':
 
-        return t('sections.teachingMethods');
+        return t('sections.mechanicsRobotics');
       case 'section-6':
 
-        return t('sections.translationProblems');
+        return t('sections.teachingMethods');
       case 'section-7':
+
+        return t('sections.translationProblems');
+      case 'section-2':
 
         return t('sections.socio');
     }
@@ -381,12 +381,12 @@ function MyArticle({ userData, role }) {
         <Alert variant="info" style={{ borderRadius: '0' }}>
           {t('profile.article.notfound')}
         </Alert>
-        <div style={{ marginBottom: "1rem", fontSize: "1.5rem", fontWeight: "300", color: '#1168eb' }}>
+        {/*<div style={{ marginBottom: "1rem", fontSize: "1.5rem", fontWeight: "300", color: '#1168eb' }}>
           {timeLeft}
-        </div>
+        </div>*/}
         {userData?.participation_type === "solve" && (
           <>
-            <Button className="button-add" variant="primary" disabled={!isTimeLeft} onClick={() => setShowUploadComponent(!showUploadComponent)}>
+            <Button className="button-add" variant="primary"  onClick={() => setShowUploadComponent(!showUploadComponent)}>
               {showUploadComponent ? t('profile.article.hidearticleupload') : t('profile.article.articleupload')}
             </Button>
             {showUploadComponent && <UploadArticleForSolver userData={userData} problems={problems && problems} />}

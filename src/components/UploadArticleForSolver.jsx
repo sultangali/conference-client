@@ -108,12 +108,13 @@ const UploadArticleForSolver = ({ userData, problems }) => {
                 <Form.Select className="mt-2" value={section} onChange={(e) => setSection(e.target.value)}>
                     <option value="">{t('choosesection')}</option>
                     <option value="section-1">{t('sections.mathModeling')}</option>
-                    <option value="section-2">{t('sections.mathProblems')}</option>
-                    <option value="section-3">{t('sections.aiML')}</option>
-                    <option value="section-4">{t('sections.mechanicsRobotics')}</option>
-                    <option value="section-5">{t('sections.teachingMethods')}</option>
-                    <option value="section-6">{t('sections.translationProblems')}</option>
-                    <option value="section-7">{t('sections.socio')}</option>
+		    <option value="section-2">{t('sections.socio')}</option>                    
+		    <option value="section-3">{t('sections.mathProblems')}</option>
+                    <option value="section-4">{t('sections.aiML')}</option>
+                    <option value="section-5">{t('sections.mechanicsRobotics')}</option>
+                    <option value="section-6">{t('sections.teachingMethods')}</option>
+                    <option value="section-7">{t('sections.translationProblems')}</option>
+                
                 </Form.Select>
             </Form.Group>
             

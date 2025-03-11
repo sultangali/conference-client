@@ -245,8 +245,7 @@ const Main = () => {
                                     </Col>
                                 </Row>
                             </div>
-                        </Col>
- <Col lg={4}>
+                        </Col> <Col lg={4}>
                             <div className="section-card w-100" style={{ borderLeft: '8px solid #4A90E2' }}>
                                 <Row>
                                     <Col className="col-12" style={{ minHeight: '100px' }}>
@@ -309,9 +308,19 @@ const Main = () => {
                                     </Col>
                                 </Row>
                             </div>
-                        </Col>                               
-            
-                       
+                        </Col>
+                        <Col lg={4}>
+                            <div className="section-card w-100" style={{ borderLeft: '8px solid purple' }}>
+                                <Row>
+                                    <Col className="col-12 d-flex row align-items-center" style={{ minHeight: '100px' }}>
+                                        <span>{t('sections.socio')}</span>
+                                    </Col>
+                                    <Col className="col-12 text-center">
+                                        <img src={sec7} style={{ width: '14rem', opacity: '0.8' }} alt="" />
+                                    </Col>
+                                </Row>
+                            </div>
+                        </Col>
                     </Row>
                 </Container>
             </Container>
@@ -320,7 +329,7 @@ const Main = () => {
                 paddingTop: '8rem',
                 paddingBottom: '8rem',
                 height: 'auto',
-                background: `url(${thirdcontainer})`
+                background: `rl(${thirdcontainer})`
 
             }}>
                 <Container >
@@ -451,31 +460,6 @@ const Main = () => {
                                 <Col md={12}>
                                     <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.29')}</span>
                                 </Col>
-<Col md={12}>
-                                    <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.30')}</span>
-                                </Col>
-<Col md={12}>
-                                    <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.31')}</span>
-                                </Col>
-<Col md={12}>
-                                    <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.32')}</span>
-                                </Col>
-<Col md={12}>
-                                    <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.33')}</span>
-                                </Col>
-<Col md={12}>
-                                    <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.34')}</span>
-                                </Col>
-<Col md={12}>
-                                    <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.35')}</span>
-                                </Col>
-<Col md={12}>
-                                    <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.36')}</span>
-                                </Col>
-<Col md={12}>
-                                    <span className="orgcommitt-span">{t('main.view5.orgcommittee.members_list.37')}</span>
-                                </Col>
-				
                             </Row>
                         </Col>
                     </Row>
@@ -525,10 +509,7 @@ const Main = () => {
                                     <Col md={12}>
                                         <span className="orgcommitt-span">{t('main.view6.zampred.2')}</span>
                                     </Col>
-<Col md={12}>
-                                        <span className="orgcommitt-span">{t('main.view6.zampred.3')}</span>
-                                    </Col>                               
- </Row>
+                                </Row>
                             </Col>
                             <Col md={12}><br /></Col>
                             <Col className="col-12">
