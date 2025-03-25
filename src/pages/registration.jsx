@@ -66,6 +66,7 @@ const Registration = () => {
     formData.participationType === 'problem' ? Yup.object().shape({
       section: Yup.string().required(t('validation.section')),
       articleTitle: Yup.string().required(t('validation.articleTitle')),
+      articleFile: Yup.mixed().required(t('validation.articleFile')) // Проверка на загрузку файла статьи
     }) : null,
     Yup.object().shape({ participationForm: Yup.string().required(t('validation.participationForm')) }),
     Yup.object().shape({ email: Yup.string().required(t('validation.email.req')).email(t('validation.email.invalid')), password: Yup.string().required(t('validation.password')).min(6, t('validation.atleast')), confirmPassword: Yup.string().required(t('validation.confirmPassword')).oneOf([Yup.ref('password'), null], t('validation.passwordMatch')) })

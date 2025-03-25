@@ -10,7 +10,7 @@ const SubmitSolveArticle = ({ formData }) => {
   const [status, setStatus] = useState("");
 
   const handleSubmit = async () => {
-    if (!formData.articleTitle || !formData.section || !formData.problem || !formData.file) {
+    if (!formData.articleTitle || !formData.section || !formData.file) {
       setStatus(t('allfieldneed') + "!");
       return;
     }

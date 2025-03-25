@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Table, Button } from "react-bootstrap";
 import axios from "../utils/axios.js";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 export const ModeratorDashboard = () => {
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState([])
+  const userData = useSelector((state) => state.user.profile);
   const [searchTitle, setSearchTitle] = useState("");
   const [searchAuthor, setSearchAuthor] = useState("");
   const [selectedSection, setSelectedSection] = useState("");
@@ -17,16 +19,12 @@ export const ModeratorDashboard = () => {
       case 'section-1':
         return t('sections.mathModeling');
       case 'section-3':
-
         return t('sections.mathProblems');
       case 'section-4':
-
         return t('sections.aiML');
       case 'section-5':
-
         return t('sections.mechanicsRobotics');
       case 'section-6':
-
         return t('sections.teachingMethods');
       case 'section-7':
         return t('sections.translationProblems');
@@ -34,7 +32,6 @@ export const ModeratorDashboard = () => {
         return t('sections.socio');
     }
   }
-
 
   useEffect(() => {
     fetchArticles();
@@ -50,9 +47,16 @@ export const ModeratorDashboard = () => {
   };
 
   const updateArticleStatus = async (id, status) => {
+    let comment = "";
+    if (status === "denied" || status === "revision") {
+      comment = prompt("Пожалуйста, предоставьте комментарий для изменения статуса:");
+      if (comment === null) return; // User cancelled the prompt
+    }
+    
     try {
-      await axios.patch(`/api/articles/${id}`, { status });
-      fetchArticles();
+      await axios.patch(`/api/articles/${id}`, { status, comment });
+      window.location.reload();
+      // No need to fetch articles again to avoid resetting the filter
     } catch (error) {
       console.error("Ошибка обновления статуса", error);
     }
@@ -104,7 +108,6 @@ export const ModeratorDashboard = () => {
         return t('registration.step2.professor');
       case "associateProfessor":
         return t('registration.step2.associateProfessor')
-
     }
   }
 
@@ -137,17 +140,18 @@ export const ModeratorDashboard = () => {
   const getArticleStatus = (articleStatus) => {
     switch (articleStatus) {
       case "process":
-        return t("article.status.process")
+        return t("article.status.process");
       case "approved":
-        return t("article.status.approved")
+        return t("article.status.approved");
       case "denied":
-        return t("article.status.denied")
+        return t("article.status.denied");
+      case "revision":
+        return t("article.status.revision");
     }
   }
 
-  return (
+  return (userData?.role === 'moderator' && (
     <Container>
-
       <h3 style={{
         marginTop: '8rem',
         fontWeight: '600'
@@ -178,13 +182,12 @@ export const ModeratorDashboard = () => {
         }} onChange={(e) => setSelectedSection(e.target.value)}>
           <option value="">{t('moderator.article.sections')}</option>
           <option value="section-1">{t('sections.mathModeling')}</option>
-	  <option value="section-2">{t('sections.socio')}</option>         
- 	  <option value="section-3">{t('sections.mathProblems')}</option>
+          <option value="section-2">{t('sections.socio')}</option>         
+          <option value="section-3">{t('sections.mathProblems')}</option>
           <option value="section-4">{t('sections.aiML')}</option>
           <option value="section-5">{t('sections.mechanicsRobotics')}</option>
           <option value="section-6">{t('sections.teachingMethods')}</option>
           <option value="section-7">{t('sections.translationProblems')}</option>
-         
         </Form.Select>
         <Form.Select value={selectedStatus} style={{
           borderRadius: '0'
@@ -192,6 +195,7 @@ export const ModeratorDashboard = () => {
           <option value="">{t('moderator.article.statuses')}</option>
           <option value="approved">{t("article.status.approved")}</option>
           <option value="process">{t("article.status.process")}</option>
+          <option value="revision">{t("article.status.revision")}</option>
           <option value="denied">{t("article.status.denied")}</option>
         </Form.Select>
       </div>
@@ -224,25 +228,30 @@ export const ModeratorDashboard = () => {
                 </td>
 
                 <td className="align-middle" style={{ width: '200px' }}>{sectionName(article.section)}</td>
-                <td style={article?.status == "approved" ? {
-                  backgroundColor: '#43A047', color: 'white'
-                } : article?.status == "denied" ? {
-                  backgroundColor: '#E53935', color: 'white'
+                <td style={article?.status === "approved" ? {
+                  backgroundColor: '#4CAF50', color: 'white' // Green
+                } : article?.status === "process" ? {
+                  backgroundColor: '#2196F3', color: 'white' // Blue
+                } : article.status === "revision" ? {
+                  backgroundColor: '#FF9800', color: 'white' // Orange
                 } : {
-                  backgroundColor: '#098cf7', color: 'white'
-                }} className="text-center align-middle">{getArticleStatus(article.status)}</td>
+                  backgroundColor: '#F44336', color: 'white' // Red
+                }} className="text-center align-middle">{getArticleStatus(article.status)}{article.comment ? <><hr style={{marginTop: '3px', marginBottom: '3px',}}/>{article.comment}</>  : ""}</td>
                 <td className="align-middle text-center">{article.file_url ? <a href={`https://conference.buketov.edu.kz${article.file_url}`} download>{t('moderator.article.download')}</a> : t('moderator.article.notfoundfile')}</td>
-                <td className="text-end">
-                  <button className="btn btn-mdtr1 "
-                    onClick={() => updateArticleStatus(article._id, "approved")}>
-                    {t("article.status.is.approved")}
-                  </button>{' '}
-                  <button className="btn btn-mdtr2" onClick={() => updateArticleStatus(article._id, "process")} >
-                    {t("article.status.is.process")}
-                  </button>{' '}
-                  <button className=" btn btn-mdtr3" onClick={() => updateArticleStatus(article._id, "denied")}>
-                    {t("article.status.is.denied")}
-                  </button>
+                <td className="text-end align-middle text-center" style={{
+                  width: '100px'
+                }}>
+                  <Form.Select 
+                    value={article.status} // Use article's current status
+                    onChange={(e) => {
+                      const newStatus = e.target.value;
+                      updateArticleStatus(article._id, newStatus);}} 
+                    style={{ width: 'auto', borderRadius: '0 ' }}>
+                    <option value="approved">{t("article.status.is.approved")}</option>
+                    <option value="process">{t("article.status.is.process")}</option>
+                    <option value="revision">{t("article.status.is.revision")}</option>
+                    <option value="denied">{t("article.status.is.denied")}</option>
+                  </Form.Select>
                 </td>
               </tr>
             ))}
@@ -265,6 +274,5 @@ export const ModeratorDashboard = () => {
         }
       `}</style>
     </Container>
-  );
+  ))
 };
-

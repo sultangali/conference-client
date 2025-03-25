@@ -348,6 +348,8 @@ function MyArticle({ userData, role }) {
         return t("article.status.approved")
       case "denied":
         return t("article.status.denied")
+      case "revision":
+        return t("article.status.revision")
     }
   }
 
@@ -482,10 +484,18 @@ function MyArticle({ userData, role }) {
               backgroundColor: '#43A047', color: 'white', borderRadius: '12px', padding: '4px 16px'
             } : article?.status == "denied" ? {
               backgroundColor: '#E53935', color: 'white', borderRadius: '12px', padding: '4px 16px'
+            } : article?.status == "revision" ? {
+              backgroundColor: '#FF9800', color: 'white', borderRadius: '12px', padding: '4px 16px'
             } : {
               backgroundColor: '#098cf7', color: 'white', borderRadius: '12px', padding: '4px 16px'
             }}>{getArticleStatus(article.status)}</span></td>
           </tr>
+          {article.comment && (
+            <tr>
+              <td className="td-title">{t('profile.article.table.comment')}</td>
+              <td><textarea className="textarea-comment w-100" rows={3} readOnly style={{paddingLeft: '8px'}} value={article.comment}></textarea></td>
+            </tr>
+          )}
           <tr>
             <td className="td-title">{t('profile.article.table.document')}</td>
             <td>

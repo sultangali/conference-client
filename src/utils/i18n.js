@@ -20,7 +20,7 @@ i18n
   .use(initReactI18next) // Связывает с React
   .init({
     resources, // Языковые файлы
-    lng: localStorage.getItem("language") || "ru", // Язык по умолчанию
+    lng: localStorage.getItem("language") || "kz", // Язык по умолчанию
     fallbackLng: "kz", // Запасной язык
     interpolation: {
       escapeValue: false, // Отключаем экранирование

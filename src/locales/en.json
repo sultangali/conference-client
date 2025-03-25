@@ -298,13 +298,15 @@
   },
   "article": {
     "status": {
-      "process": "Under Review",
+      "process": "Processing",
       "approved": "Approved",
+      "revision": "Revision required",
       "denied": "Rejected",
       "is": {
-        "process": "Approve",
-        "approved": "Processing",
-        "denied": "Reject"
+        "process": "Processing",
+        "approved": "Approved",
+        "denied": "Rejected",
+        "revision": "Revision required"
       }
     }
   },
@@ -375,6 +377,7 @@
     "lastName": "Enter your last name",
     "phone": "Enter your phone number",
     "organization": "Enter the name of the organization",
+    "articleFile": "Select the article file",
     "participationType": {
       "name": "Select the type of participation",
       "problem": "I provide a problem",
@@ -463,10 +466,12 @@
         "section": "Section",
         "authors": "Authors",
         "status": "Status",
+        "comment": "Comment",
         "document": "Document",
         "download": "Download",
         "notdownloaded": "Not uploaded",
-        "filenotfound": "No file"
+        "filenotfound": "No file",
+        "notfound": "At the moment, you have no uploaded article. Please wait until the upload option is available."
       },
       "problemnotfound": "No problems available yet."
     },

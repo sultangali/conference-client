@@ -247,10 +247,18 @@ export const Step4 = ({ formData, setFormData, validationErrors }) => {
             <Col xs={12} style={{ marginTop: '20px' }}>
               <Form.Label>{t('step4.attachFile')}</Form.Label>
               <Form.Control
+                required
                 type="file"
                 accept=".pdf, .doc, .docx, .tex"
+                isInvalid={validationErrors.articleFile}
                 onChange={handleChangeFile}
               />
+              <Form.Control.Feedback type="invalid">
+                {validationErrors.articleFile}
+              </Form.Control.Feedback>
+              {/* <Form.Text className="text-danger">
+                {t('step4.fileRequired')}
+              </Form.Text> */}
               {file && (
                 <span style={{ color: 'green', marginTop: '5px' }}>
                   {formData?.articleFile &&
