@@ -391,7 +391,7 @@ function MyArticle({ userData, role }) {
         formData.append('file', editedArticle.file);
       }
       
-      const response = await fetch('http://localhost:5000/api/articles/update', {
+      const response = await fetch('https://conference.buketov.edu.kz/api/articles/update', {
         method: 'POST',
         body: formData,
         credentials: 'include',
