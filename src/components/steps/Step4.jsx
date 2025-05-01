@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Form, Table, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { axios } from '../../utils';
+import axios from '../../utils/axios.js';
 
 export const Step4 = ({ formData, setFormData, validationErrors }) => {
   const { t } = useTranslation();

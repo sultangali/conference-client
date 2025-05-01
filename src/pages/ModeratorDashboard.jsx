@@ -54,9 +54,17 @@ export const ModeratorDashboard = () => {
     }
     
     try {
-      await axios.patch(`/api/articles/${id}`, { status, comment });
+      await axios.patch(`/api/articles/${id}`, 
+        { status, comment },
+        { 
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json'
+          },
+          withCredentials: true
+        }
+      );
       window.location.reload();
-      // No need to fetch articles again to avoid resetting the filter
     } catch (error) {
       console.error("Ошибка обновления статуса", error);
     }

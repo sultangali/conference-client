@@ -211,7 +211,7 @@
       "placeholder": "Enter password",
       "error": {
         "1": "Enter your password",
-        "2": "Password must be between 6 and 16 characters"
+        "2": "Password must be between 6 and 32 characters"
       }
     },
     "isfirst": {
@@ -455,6 +455,9 @@
       "s": "s"
     },
     "article": {
+      "submitChanges": "Submit changes",
+      "cancelEdit": "Cancel changes",
+      "editArticle": "Edit article",
       "title": "My Article",
       "notfound": "At the moment, you have no uploaded article. Please wait until the upload option is available.",
       "hidearticleupload": "Hide Article Upload",
@@ -544,6 +547,7 @@
     "p8": "NJSC Karaganda University named after E.A. Buketov",
     "p9": "Faculty of Mathematics and Information Technologies",
 "p10": "The registration fee covers the costs of organizing the conference and publishing materials, but does not include accommodation and meals.",
+"p11": "DETAILS FOR RECEIVING INTERNATIONAL TRANSFERS FOR INDIVIDUALS AND LEGAL ENTITIES (IN USA DOLLARS):",
 "b4": "Registration fee:",
 "la1": "KZT for participants from Kazakhstan",
 "la2": "for international participants"

@@ -311,6 +311,12 @@ function MyArticle({ userData, role }) {
   const [timeLeft, setTimeLeft] = useState("");
   const [isTimeLeft, setIsTimeLeft] = useState(false);
   const [showUploadComponent, setShowUploadComponent] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedArticle, setEditedArticle] = useState({
+    title: article?.title || '',
+    section: article?.section || '',
+    file: null
+  });
   const deadline = moment("2025-04-01T00:00:00");
   const { t } = useTranslation();
   const sectionName = (section) => {
@@ -374,6 +380,53 @@ function MyArticle({ userData, role }) {
 
     return () => clearInterval(interval);
   }, []);
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append('title', editedArticle.title);
+      formData.append('section', editedArticle.section);
+      if (editedArticle.file) {
+        formData.append('file', editedArticle.file);
+      }
+      
+      const response = await fetch('http://localhost:5000/api/articles/update', {
+        method: 'POST',
+        body: formData,
+        credentials: 'include',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
+      if (response.ok) {
+        setIsEditing(false);
+        // Обновляем данные профиля
+        dispatch(fetchUserProfile());
+      } else {
+        throw new Error('Failed to update article');
+      }
+    } catch (error) {
+      console.error('Error updating article:', error);
+    }
+  };
+
+  const handleFileChange = (e) => {
+    setEditedArticle({
+      ...editedArticle,
+      file: e.target.files[0]
+    });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditedArticle({
+      ...editedArticle,
+      [name]: value
+    });
+  };
+
   if (!article) {
     return (
       <div className="no-article-div">
@@ -468,46 +521,123 @@ function MyArticle({ userData, role }) {
       <br />
       <h3>{t('profile.article.title')}</h3>
       <br />
-      <Table bordered striped hover>
-        <tbody>
-          <tr>
-            <td className="td-title">{t('profile.article.table.name')}</td>
-            <td>{article.title}</td>
-          </tr>
-          <tr>
-            <td className="td-title">{t('profile.article.table.section')}</td>
-            <td>{sectionName(article.section)}</td>
-          </tr>
-          <tr>
-            <td className="td-title">{t('profile.article.table.status')}</td>
-            <td  > <span style={article?.status == "approved" ? {
-              backgroundColor: '#43A047', color: 'white', borderRadius: '12px', padding: '4px 16px'
-            } : article?.status == "denied" ? {
-              backgroundColor: '#E53935', color: 'white', borderRadius: '12px', padding: '4px 16px'
-            } : article?.status == "revision" ? {
-              backgroundColor: '#FF9800', color: 'white', borderRadius: '12px', padding: '4px 16px'
-            } : {
-              backgroundColor: '#098cf7', color: 'white', borderRadius: '12px', padding: '4px 16px'
-            }}>{getArticleStatus(article.status)}</span></td>
-          </tr>
-          {article.comment && (
+      {(article?.status === 'revision' || article?.status === 'denied') && (
+        <Button 
+          variant="primary" 
+          onClick={() => setIsEditing(!isEditing)}
+          style={{
+            backgroundColor: !isEditing ? '#1168eb' : '#098cf7',
+            color: 'white',
+            borderRadius: '1px',
+            padding: '8px 16px'
+          }}
+          className="mb-3"
+        >
+          {isEditing ? t('profile.article.cancelEdit') : t('profile.article.editArticle')}
+        </Button>
+      )}
+      
+      {isEditing ? (
+        <form onSubmit={handleEditSubmit}>
+          <Table bordered striped hover>
+            <tbody>
+              <tr>
+                <td className="td-title">{t('profile.article.table.name')}</td>
+                <td>
+                  <input
+                    type="text"
+                    name="title"
+                    value={editedArticle.title}
+                    onChange={handleInputChange}
+                    className="form-control"
+                    required
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td className="td-title">{t('profile.article.table.section')}</td>
+                <td>
+                  <select
+                    name="section"
+                    value={editedArticle.section}
+                    onChange={handleInputChange}
+                    className="form-control"
+                    required
+                  >
+                    <option value="section-1">{t('sections.mathModeling')}</option>
+                    <option value="section-2">{t('sections.socio')}</option>
+                    <option value="section-3">{t('sections.mathProblems')}</option>
+                    <option value="section-4">{t('sections.aiML')}</option>
+                    <option value="section-5">{t('sections.mechanicsRobotics')}</option>
+                    <option value="section-6">{t('sections.teachingMethods')}</option>
+                    <option value="section-7">{t('sections.translationProblems')}</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td className="td-title">{t('profile.article.table.document')}</td>
+                <td>
+                  <input
+                    type="file"
+                    onChange={handleFileChange}
+                    className="form-control"
+                    accept=".doc,.docx,.pdf"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </Table>
+          <Button type="submit" variant="success" style={{
+            backgroundColor: '#43A047',
+            color: 'white',
+            borderRadius: '1px',
+            padding: '8px 16px'
+          }} className="mt-3">
+            {t('profile.article.submitChanges')}
+          </Button>
+        </form>
+      ) : (
+        <Table bordered striped hover>
+          <tbody>
             <tr>
-              <td className="td-title">{t('profile.article.table.comment')}</td>
-              <td><textarea className="textarea-comment w-100" rows={3} readOnly style={{paddingLeft: '8px'}} value={article.comment}></textarea></td>
+              <td className="td-title">{t('profile.article.table.name')}</td>
+              <td>{article.title}</td>
             </tr>
-          )}
-          <tr>
-            <td className="td-title">{t('profile.article.table.document')}</td>
-            <td>
-              {article.file_url ? (
-                <a href={`https://conference.buketov.edu.kz${article.file_url}`} download>{t('profile.article.table.download')}</a>
-              ) : t('profile.article.table.notdownloaded')}
-            </td>
-          </tr>
-        </tbody>
-      </Table>
-
-
+            <tr>
+              <td className="td-title">{t('profile.article.table.section')}</td>
+              <td>{sectionName(article.section)}</td>
+            </tr>
+            <tr>
+              <td className="td-title">{t('profile.article.table.status')}</td>
+              <td>
+                <span style={article?.status == "approved" ? {
+                  backgroundColor: '#43A047', color: 'white', borderRadius: '12px', padding: '4px 16px'
+                } : article?.status == "denied" ? {
+                  backgroundColor: '#E53935', color: 'white', borderRadius: '12px', padding: '4px 16px'
+                } : article?.status == "revision" ? {
+                  backgroundColor: '#FF9800', color: 'white', borderRadius: '12px', padding: '4px 16px'
+                } : {
+                  backgroundColor: '#098cf7', color: 'white', borderRadius: '12px', padding: '4px 16px'
+                }}>{getArticleStatus(article.status)}</span>
+              </td>
+            </tr>
+            {article.comment && (
+              <tr>
+                <td className="td-title">{t('profile.article.table.comment')}</td>
+                <td><textarea className="textarea-comment w-100" rows={3} readOnly style={{paddingLeft: '8px'}} value={article.comment}></textarea></td>
+              </tr>
+            )}
+            <tr>
+              <td className="td-title">{t('profile.article.table.document')}</td>
+              <td>
+                {article.file_url ? (
+                  <a href={`https://conference.buketov.edu.kz${article.file_url}`} download>{t('profile.article.table.download')}</a>
+                ) : t('profile.article.table.notdownloaded')}
+              </td>
+            </tr>
+          </tbody>
+        </Table>
+      )}
     </div>
   );
 }

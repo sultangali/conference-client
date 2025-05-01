@@ -106,7 +106,7 @@ const Login = () => {
                             message: t('login.password.error.2'),
                           },
                           maxLength: {
-                            value: 16,
+                            value: 32,
                             message: t('login.password.error.2'),
                           },
                         }) }}

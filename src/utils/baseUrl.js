@@ -1,1 +1,1 @@
-export default "https://conference.buketov.edu.kz"
+export default "http://localhost:5000"

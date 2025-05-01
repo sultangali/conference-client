@@ -49,8 +49,7 @@ export const Step6 = ({ formData, setFormData, validationErrors }) => {
                 label= {<div>&nbsp;{t('registration.step6.agree')} </div>}
                 checked={formData?.checked}
                 className='is-checkedd'
-                onChange={(e) => setFormData(prev => ({ ...prev, checked: e.target.checked }))}
-              />
+                onChange={(e) => setFormData(prev => ({ ...prev, checked: e.target.checked }))}/>
             </Col>
           </Row>
         </Col>

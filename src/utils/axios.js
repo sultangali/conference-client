@@ -2,7 +2,7 @@ import axios from 'axios';
 import i18n from './i18n.js'
 
 const instance = axios.create({
-  baseURL: 'https://conference.buketov.edu.kz', // или твой API URL
+  baseURL: 'http://localhost:5000', // или твой API URL
 });
 
 // Автоматически подставлять токен

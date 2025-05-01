@@ -69,7 +69,13 @@ const Registration = () => {
       articleFile: Yup.mixed().required(t('validation.articleFile')) // Проверка на загрузку файла статьи
     }) : null,
     Yup.object().shape({ participationForm: Yup.string().required(t('validation.participationForm')) }),
-    Yup.object().shape({ email: Yup.string().required(t('validation.email.req')).email(t('validation.email.invalid')), password: Yup.string().required(t('validation.password')).min(6, t('validation.atleast')), confirmPassword: Yup.string().required(t('validation.confirmPassword')).oneOf([Yup.ref('password'), null], t('validation.passwordMatch')) })
+    Yup.object().shape({ 
+      email: Yup.string().required(t('validation.email.req')).email(t('validation.email.invalid')), 
+      password: Yup.string().required(t('validation.password'))
+      .min(6, t('validation.atleast')).max(32, t('validation.maxlength')), 
+      confirmPassword: Yup.string().required(t('validation.confirmPassword')).oneOf([Yup.ref('password'), null], t('validation.passwordMatch')),
+      checked: Yup.boolean().oneOf([true], t('validation.agreement'))
+    })
   ].filter(Boolean);
 
   // === Валидация текущего шага ===
