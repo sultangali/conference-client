@@ -19,6 +19,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import CelebrationIcon from "@mui/icons-material/Celebration";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
+import ReceiptUpload from "../components/ReceiptUpload.jsx";
 
 
 const Profile = () => {
@@ -81,13 +82,32 @@ const Profile = () => {
                 </Nav.Item>
               )}
               {userData?.role === "correspondent" && (
+                <>
                 <Nav.Item>
                   <div className="pill-btn">
                     <Nav.Link className="nav-link" eventKey="coauthors">{t("profile.tabs.coauthors")}</Nav.Link>
                   </div>
                 </Nav.Item>
+               
+                </>
+                
               )}
               {/* {userData?.role !== "coauthor" && ( */}
+              <Nav.Item>
+                <div className="pill-btn">
+                  <Nav.Link
+                    className={`nav-link${userData?.article?.receipt_status === 'not_uploaded' ? ' receipt-pending-tab' : ''}`}
+                    eventKey="receipt"
+                    style={userData?.article?.receipt_status === 'not_uploaded' ? {
+                      background: '#ff9800',
+                      color: 'white',
+                      fontWeight: 500
+                    } : {}}
+                  >
+                    {t("profile.tabs.receipt")}
+                  </Nav.Link>
+                </div>
+              </Nav.Item>
               <Nav.Item>
                 <div className="pill-btn">
                   <Nav.Link className="nav-link" eventKey="timeline">{t("profile.tabs.timeline")}</Nav.Link>
@@ -98,6 +118,7 @@ const Profile = () => {
                   <Nav.Link className="nav-link" eventKey="accommodation">{t("profile.tabs.accommodation")}</Nav.Link>
                 </div>
               </Nav.Item>
+              
               {/* )} */}
             </Nav>
           </Col>
@@ -131,16 +152,24 @@ const Profile = () => {
                   </Tab.Pane>
                 )}
                 {userData?.role == "correspondent" && (
+                  <>
                   <Tab.Pane eventKey="coauthors">
                     <CoauthorsTab userData={userData} />
                   </Tab.Pane>
+                  <Tab.Pane eventKey="receipt">
+                  <ReceiptUpload article={userData?.article} />
+                </Tab.Pane>
+                  </>
+                  
                 )}
+               
                 <Tab.Pane eventKey="timeline">
                   <TimelineTab userData={userData} />
                 </Tab.Pane>
                 <Tab.Pane eventKey="accommodation">
                   <Accommodation userData={userData} />
                 </Tab.Pane>
+                
               </Tab.Content>
             </Col>
           }
@@ -220,6 +249,22 @@ function PersonalInfo({ userData }) {
     }
   }
 
+  const getReceiptStatus = (article) => {
+    if (!article?.receipt_url) {
+      return t('receipt.status.not_uploaded');
+    }
+    switch (article?.receipt_status) {
+      case 'pending':
+        return t('receipt.status.pending');
+      case 'approved':
+        return t('receipt.status.approved');
+      case 'rejected':
+        return t('receipt.status.rejected');
+      default:
+        return t('receipt.status.not_uploaded');
+    }
+  };
+
   return (
     <div>
       <br />
@@ -265,6 +310,20 @@ function PersonalInfo({ userData }) {
                 <td className="td-title">{t('profile.main.role')}</td>
                 <td>{getRoleName(userData?.role)}</td>
               </tr>
+              <tr>
+                <td className="td-title">{t('receipt.title')}</td>
+                <td>
+                  <span style={{
+                    backgroundColor: !userData?.article?.receipt_url ? '#bdbdbd' : userData?.article?.receipt_status === "approved" ? '#4CAF50' : 
+                                   userData?.article?.receipt_status === "rejected" ? '#F44336' : '#FF9800',
+                    color: 'white',
+                    padding: '4px 16px',
+                    borderRadius: '25px'
+                  }}>
+                    {getReceiptStatus(userData?.article)}
+                  </span>
+                </td>
+              </tr>
             </tbody> :
             <tbody>
               <tr>
@@ -295,6 +354,20 @@ function PersonalInfo({ userData }) {
                 <td className="td-title">{t('profile.main.role')}</td>
                 <td>{getRoleName(userData?.role)}</td>
               </tr>
+              {/* <tr>
+                <td className="td-title">{t('receipt.title')}</td>
+                <td>
+                  <span style={{
+                    backgroundColor: !userData?.article?.receipt_url ? '#bdbdbd' : userData?.article?.receipt_status === "approved" ? '#4CAF50' : 
+                                   userData?.article?.receipt_status === "rejected" ? '#F44336' : '#FF9800',
+                    color: 'white',
+                    padding: '4px 16px',
+                    borderRadius: '25px'
+                  }}>
+                    {getReceiptStatus(userData?.article)}
+                  </span>
+                </td>
+              </tr> */}
             </tbody>
         }
       </Table>
@@ -759,7 +832,7 @@ const TimelineTab = () => {
   const { t, i18n } = useTranslation()
 
   const timelineStages = [
-    { title: t('profile.timeline.timelinestages.1.title'), deadline: "2025-04-01", icon: <ScienceIcon />, description: t('profile.timeline.timelinestages.1.desc') },
+    { title: t('profile.timeline.timelinestages.1.title'), deadline: "2025-06-01", icon: <ScienceIcon />, description: t('profile.timeline.timelinestages.1.desc') },
     { title: t('profile.timeline.timelinestages.2.title'), deadline: "2025-06-01", icon: <PeopleIcon />, description: t('profile.timeline.timelinestages.2.desc') },
     { title: t('profile.timeline.timelinestages.3.title'), deadline: "2025-06-17", icon: <EventIcon />, description: t('profile.timeline.timelinestages.3.desc') },
     { title: t('profile.timeline.timelinestages.4.title'), deadline: "2025-06-20", icon: <CelebrationIcon />, description: t('profile.timeline.timelinestages.4.desc') },

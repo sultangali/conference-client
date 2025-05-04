@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Form, Table, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Table, Button, Modal, InputGroup } from "react-bootstrap";
 import axios from "../utils/axios.js";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { FaFileAlt, FaReceipt, FaEnvelope, FaCheckCircle, FaTimesCircle, FaHourglassHalf, FaQuestionCircle, FaCommentDots } from "react-icons/fa";
 
 export const ModeratorDashboard = () => {
   const [articles, setArticles] = useState([])
@@ -11,6 +12,13 @@ export const ModeratorDashboard = () => {
   const [searchAuthor, setSearchAuthor] = useState("");
   const [selectedSection, setSelectedSection] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
+  const [showMailModal, setShowMailModal] = useState(false);
+  const [mailTo, setMailTo] = useState("");
+  const [mailSubject, setMailSubject] = useState("");
+  const [mailBody, setMailBody] = useState("");
+  const [mailLoading, setMailLoading] = useState(false);
+  const [mailSuccess, setMailSuccess] = useState("");
+  const [mailError, setMailError] = useState("");
 
   const { t } = useTranslation();
 
@@ -158,15 +166,184 @@ export const ModeratorDashboard = () => {
     }
   }
 
+  // Новый геттер для статуса квитанции с бейджем и иконкой
+  const getReceiptBadge = (article) => {
+    if (!article?.receipt_url) {
+      return <span className="badge bg-secondary d-flex align-items-center" style={{gap: 4}}><FaQuestionCircle /> {t('receipt.status.not_uploaded')}</span>;
+    }
+    switch (article?.receipt_status) {
+      case 'pending':
+        return <span className="badge bg-warning text-dark d-flex align-items-center" style={{gap: 4}}><FaHourglassHalf /> {t('receipt.status.pending')}</span>;
+      case 'approved':
+        return <span className="badge bg-success d-flex align-items-center" style={{gap: 4}}><FaCheckCircle /> {t('receipt.status.approved')}</span>;
+      case 'rejected':
+        return <span className="badge bg-danger d-flex align-items-center" style={{gap: 4}}><FaTimesCircle /> {t('receipt.status.rejected')}</span>;
+      default:
+        return <span className="badge bg-secondary d-flex align-items-center" style={{gap: 4}}><FaQuestionCircle /> {t('receipt.status.not_uploaded')}</span>;
+    }
+  };
+
+  // Функция отправки письма (пример через API)
+  const handleSendMail = async () => {
+    setMailLoading(true);
+    setMailSuccess("");
+    setMailError("");
+    try {
+      await axios.post("/api/send-email", {
+        to: mailTo,
+        subject: mailSubject,
+        text: mailBody
+      });
+      setMailSuccess(t('receipt.success'));
+      setMailBody("");
+    } catch (e) {
+      setMailError(t('receipt.error'));
+    } finally {
+      setMailLoading(false);
+    }
+  };
+
+  // Новый тумблер для receipt_status
+  const handleReceiptToggle = async (article) => {
+    const newStatus = article.receipt_status === 'approved' ? 'pending' : 'approved';
+    try {
+      await axios.patch(`/api/articles/${article._id}/receipt-status`, {
+        receipt_status: newStatus
+      });
+      fetchArticles();
+    } catch (error) {
+      // Можно добавить уведомление об ошибке
+    }
+  };
+
   return (userData?.role === 'moderator' && (
-    <Container>
-      <h3 style={{
-        marginTop: '8rem',
-        fontWeight: '600'
-      }}>{t('moderator.title')}</h3>
-      <hr />
+    <Container fluid style={{marginTop: '7rem'}}>
+      
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        marginBottom: '1rem'
+      }}>
+        <h4 style={{
+          fontWeight: '600',
+          fontSize: '1.5rem',
+          color: '#1976d2',
+          margin: 0,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem'
+        }}>
+          <FaFileAlt size={19} />
+          {t('moderator.title')}
+        </h4>
+        <span style={{
+          backgroundColor: '#e3f2fd',
+          color: '#1976d2',
+          padding: '0.2rem 1.4rem',
+          borderRadius: '24px',
+          fontSize: '1.2rem',
+          fontWeight: '500'
+        }}>
+          {articles.length} {t('moderator.articles')}
+        </span>
+      </div>
+      
+      <Row className="mb-3">
+      <Col md={3}>
+          <div className="p-2 border rounded shadow-sm bg-white">
+            <div className="d-flex align-items-center">
+              <div className="p-3 rounded-square me-2" style={{backgroundColor: '#e8f5e9'}}>
+                <FaCheckCircle size={20} color="#43a047"/>
+              </div>
+              <div>
+                <small className="text-muted">{t('moderator.summary.approved')}</small>
+                <h4 className="mb-0 fw-bold">{articles.filter(a => a.status === 'approved').length}</h4>
+              </div>
+            </div>
+          </div>
+        </Col>
+        <Col md={3}>
+          <div className="p-2 border rounded shadow-sm bg-white">
+            <div className="d-flex align-items-center">
+              <div className="p-3 rounded-square me-2" style={{backgroundColor: '#e3f2fd'}}>
+                <FaFileAlt size={20} color="#1976d2"/>
+              </div>
+              <div>
+                <small className="text-muted">{t('moderator.summary.process')}</small>
+                <h4 className="mb-0 fw-bold">{articles.filter(a => a.status === 'process').length}</h4>
+              </div>
+            </div>
+          </div>
+        </Col>
+        <Col md={3}>
+          <div className="p-2 border rounded shadow-sm bg-white">
+            <div className="d-flex align-items-center">
+              <div className="p-3 rounded-square me-2" style={{backgroundColor: '#fff3e0'}}>
+                <FaHourglassHalf size={20} color="#f57c00"/>
+              </div>
+              <div>
+                <small className="text-muted">{t('moderator.summary.inProcess')}</small>
+                <h4 className="mb-0 fw-bold">{articles.filter(a => a.status === 'revision').length}</h4>
+              </div>
+            </div>
+          </div>
+        </Col>
+        
+        <Col md={3}>
+          <div className="p-2 border rounded shadow-sm bg-white">
+            <div className="d-flex align-items-center">
+              <div className="p-3 rounded-square me-2" style={{backgroundColor: '#ffebee'}}>
+                <FaTimesCircle size={20} color="#e53935"/>
+              </div>
+              <div>
+                <small className="text-muted">{t('moderator.summary.denied')}</small>
+                <h4 className="mb-0 fw-bold">{articles.filter(a => a.status === 'denied').length}</h4>
+              </div>
+            </div>
+          </div>
+        </Col>
+      </Row>
+
+      <Row className="mb-4">
+        <Col md={4}>
+          <div className="p-3 border bg-light h-100">
+            <h5 className="mb-3">{t('moderator.filters.bySection')}</h5>
+            {['section-1', 'section-2', 'section-3', 'section-4', 'section-5', 'section-6', 'section-7'].map(section => (
+              <div key={section} className="d-flex justify-content-between mb-2">
+                <span>{sectionName(section)}:</span>
+                <span className="fw-bold">{articles.filter(a => a.section === section).length}</span>
+              </div>
+            ))}
+          </div>
+        </Col>
+        <Col md={4}>
+          <div className="p-3 border bg-light h-100">
+            <h5 className="mb-3">{t('moderator.filters.byStatus')}</h5>
+            {['approved', 'process', 'revision', 'denied'].map(status => (
+              <div key={status} className="d-flex justify-content-between mb-2">
+                <span>{t(`article.status.${status}`)}:</span>
+                <span className="fw-bold">{articles.filter(a => a.status === status).length}</span>
+              </div>
+            ))}
+          </div>
+        </Col>
+        <Col md={4}>
+          <div className="p-3 border bg-light h-100">
+            <h5 className="mb-3">{t('moderator.filters.byReceipt')}</h5>
+            <div className="d-flex justify-content-between mb-2">
+              <span>{t('receipt.status.approved')}:</span>
+              <span className="fw-bold">{articles.filter(a => a.receipt_status === 'approved').length}</span>
+            </div>
+            <div className="d-flex justify-content-between mb-2">
+              <span>{t('receipt.status.pending')}:</span>
+              <span className="fw-bold">{articles.filter(a => a.receipt_status === 'pending').length}</span>
+            </div>
+          </div>
+        </Col>
+      </Row>
       {/* Фильтры */}
-      <div className="filter-container">
+      <div className="filter-container mb-3">
         <Form.Control
           type="text"
           placeholder={t('moderator.article.plname')}
@@ -207,24 +384,29 @@ export const ModeratorDashboard = () => {
           <option value="denied">{t("article.status.denied")}</option>
         </Form.Select>
       </div>
-      {/* Скроллируемая таблица */}
+      {/* Таблица */}
       <div className="table-container">
-        <Table bordered striped hover>
+        <Table bordered striped hover responsive>
           <thead>
             <tr>
+              <th>#</th>
               <th>{t('moderator.article.name')}</th>
               <th>{t('moderator.article.authors')}</th>
               <th>{t('moderator.article.section')}</th>
               <th>{t('moderator.article.status')}</th>
-              <th className="text-center" style={{ width: 'auto' }}>{t('moderator.article.file')}</th>
-              <th className="text-end">{t('moderator.article.action')}</th>
+              <th className="text-center">{t('moderator.article.file')}</th>
+              <th className="text-center">{t('moderator.article.action')}</th>
+              <th className="text-center">{t('moderator.article.mail', 'Письмо')}</th>
+              <th className="text-center">{t('moderator.article.receipt')}</th>
+              
             </tr>
           </thead>
           <tbody>
-            {filteredArticles.map((article) => (
+            {filteredArticles.map((article, idx) => (
               <tr key={article._id}>
-                <td className="align-middle" style={{ width: 'auto' }}>{article.title}</td>
-                <td className="align-middle" style={{ width: '200px' }}>
+                <td className="align-middle text-center">{idx + 1}</td>
+                <td className="align-middle">{article.title}</td>
+                <td className="align-middle">
                   {article.correspondent ? (
                     <>
                       {article.correspondent.lastname} {article.correspondent.firstname}
@@ -234,39 +416,123 @@ export const ModeratorDashboard = () => {
                     </>
                   ) : t('moderator.article.unknownauthor')}
                 </td>
-
-                <td className="align-middle" style={{ width: '200px' }}>{sectionName(article.section)}</td>
-                <td style={article?.status === "approved" ? {
-                  backgroundColor: '#4CAF50', color: 'white' // Green
-                } : article?.status === "process" ? {
-                  backgroundColor: '#2196F3', color: 'white' // Blue
-                } : article.status === "revision" ? {
-                  backgroundColor: '#FF9800', color: 'white' // Orange
-                } : {
-                  backgroundColor: '#F44336', color: 'white' // Red
-                }} className="text-center align-middle">{getArticleStatus(article.status)}{article.comment ? <><hr style={{marginTop: '3px', marginBottom: '3px',}}/>{article.comment}</>  : ""}</td>
-                <td className="align-middle text-center">{article.file_url ? <a href={`https://conference.buketov.edu.kz${article.file_url}`} download>{t('moderator.article.download')}</a> : t('moderator.article.notfoundfile')}</td>
-                <td className="text-end align-middle text-center" style={{
-                  width: '100px'
-                }}>
+                <td className="align-middle">{sectionName(article.section)}</td>
+                {/* Статус статьи */}
+                <td className={`align-middle text-center ${
+                  article.status === "approved" ? "bg-success text-white" :
+                  article.status === "process" ? "bg-primary text-white" :
+                  article.status === "revision" ? "bg-warning text-dark" :
+                  article.status === "denied" ? "bg-danger text-white" : ""
+                }`}>
+                  {article.status === "approved" ? <><FaCheckCircle className="me-1" />{t('article.status.approved')}</> :
+                   article.status === "process" ? <><FaHourglassHalf className="me-1" />{t('article.status.process')}</> :
+                   article.status === "revision" ? <><FaQuestionCircle className="me-1" />{t('article.status.revision')}{article.comment ? <><hr style={{marginTop: 4, marginBottom: 4}} /><FaCommentDots className="ms-1" />{" "}{article.comment}</> : ""}</> :
+                   <><FaTimesCircle className="me-1" />{t('article.status.denied')}{article.comment ? <><hr style={{marginTop: 4, marginBottom: 4}} /><FaCommentDots className="ms-1" />{" "}{article.comment}</> : ""}</>}
+                </td>
+                {/* Скачать статью */}
+                <td className="align-middle text-center">
+                  {article.file_url ? (
+                    <a href={`https://conference.buketov.edu.kz${article.file_url}`} download title={t('moderator.article.download')}><FaFileAlt size={20} /></a>
+                  ) : <FaFileAlt color="#bdbdbd" size={20} title={t('moderator.article.notfoundfile')} />}
+                </td>
+                {/* Действия (select options) */}
+                <td className="align-middle text-center">
                   <Form.Select 
-                    value={article.status} // Use article's current status
+                    value={article.status}
                     onChange={(e) => {
                       const newStatus = e.target.value;
                       updateArticleStatus(article._id, newStatus);}} 
-                    style={{ width: 'auto', borderRadius: '0 ' }}>
+                    style={{ width: 'auto', borderRadius: '0', display: 'inline-block', minWidth: 120 }}
+                    size="sm"
+                  >
                     <option value="approved">{t("article.status.is.approved")}</option>
                     <option value="process">{t("article.status.is.process")}</option>
                     <option value="revision">{t("article.status.is.revision")}</option>
                     <option value="denied">{t("article.status.is.denied")}</option>
                   </Form.Select>
                 </td>
+                {/* Письмо: отдельная колонка */}
+                <td className="align-middle text-center">
+                  <Button variant="outline-dark" size="sm" style={{ borderRadius: 20, padding: '2px 7px' }}
+                    onClick={() => {
+                      setMailTo(article.correspondent?.email || "");
+                      setMailSubject("");
+                      setMailBody("");
+                      setShowMailModal(true);
+                    }}
+                  >
+                    <FaEnvelope />
+                  </Button>
+                </td>
+                {/* Квитанция: иконка, бейдж, тумблер */}
+                <td className="align-middle text-center receipt-cell">
+                  <div className="receipt-row-flex">
+                    {/* Иконка скачивания квитанции */}
+                    <div className="receipt-icon">
+                      {article.receipt_url ? (
+                        <a href={`https://conference.buketov.edu.kz${article.receipt_url}`} download title={t('moderator.article.downloadReceipt')} className="receipt-download-link">
+                          <FaReceipt size={22} />
+                        </a>
+                      ) : <FaReceipt color="#bdbdbd" size={22} title={t('moderator.article.noReceipt')} />}
+                    </div>
+                    {/* Иконка статуса квитанции (без текста) */}
+                    <div className="receipt-status-icon">
+                      {(!article?.receipt_url || article?.receipt_status === 'not_uploaded') && <FaQuestionCircle color="#bdbdbd" size={20} title={t('receipt.status.not_uploaded')} />}
+                      {article?.receipt_status === 'pending' && <FaHourglassHalf color="#ff9800" size={20} title={t('receipt.status.pending')} />}
+                      {article?.receipt_status === 'approved' && <FaCheckCircle color="#219653" size={20} title={t('receipt.status.approved')} />}
+                      {article?.receipt_status === 'rejected' && <FaTimesCircle color="#f44336" size={20} title={t('receipt.status.rejected')} />}
+                    </div>
+                    {/* Тумблер */}
+                    <div className="receipt-switch-row">
+                      {article.receipt_url && (
+                        <Form.Check
+                          type="switch"
+                          id={`receipt-status-${article._id}`}
+                          label=""
+                          checked={article.receipt_status === 'approved'}
+                          onChange={() => handleReceiptToggle(article)}
+                          className="receipt-switch"
+                        />
+                      )}
+                    </div>
+                  </div>
+                </td>
+                
               </tr>
             ))}
           </tbody>
         </Table>
       </div>
-
+      {/* Модальное окно для отправки письма */}
+      <Modal show={showMailModal} onHide={() => setShowMailModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title><FaEnvelope className="me-2" />{t('moderator.article.sendMail', 'Отправить письмо')}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email" value={mailTo} onChange={e => setMailTo(e.target.value)} readOnly />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>{t('moderator.article.mailSubject', 'Тема')}</Form.Label>
+              <Form.Control type="text" value={mailSubject} onChange={e => setMailSubject(e.target.value)} />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>{t('moderator.article.mailBody', 'Сообщение')}</Form.Label>
+              <Form.Control as="textarea" rows={4} value={mailBody} onChange={e => setMailBody(e.target.value)} />
+            </Form.Group>
+            {mailSuccess && <div className="alert alert-success">{mailSuccess}</div>}
+            {mailError && <div className="alert alert-danger">{mailError}</div>}
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowMailModal(false)}>{t('buttons.back', 'Назад')}</Button>
+          <Button variant="primary" onClick={handleSendMail} disabled={mailLoading}>
+            {mailLoading ? t('receipt.uploading') : t('moderator.article.send', 'Отправить')}
+          </Button>
+        </Modal.Footer>
+      </Modal>
       {/* Стили */}
       <style>{`
         .filter-container {
@@ -274,11 +540,49 @@ export const ModeratorDashboard = () => {
           gap: 10px;
           margin-bottom: 10px;
         }
-
         .table-container {
-          max-height: 70vh; /* 🔥 Высота скролла */
+          max-height: 70vh;
           overflow-y: auto;
           border: 1px solid #ddd;
+        }
+        .badge {
+          font-size: 0.95em;
+          padding: 0.45em 0.8em;
+        }
+        .receipt-cell {
+          background: #f6f6f6;
+          min-width: 180px;
+          vertical-align: middle;
+        }
+        .receipt-row-flex {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: 1.1rem;
+          min-height: 60px;
+        }
+        .receipt-icon {
+          display: flex;
+          align-items: center;
+        }
+        .receipt-download-link {
+          color: #1976d2;
+          transition: color 0.2s;
+        }
+        .receipt-download-link:hover {
+          color: #0d47a1;
+        }
+        .receipt-status-icon {
+          display: flex;
+          align-items: center;
+        }
+        .receipt-switch-row {
+          display: flex;
+          align-items: center;
+        }
+        .receipt-switch .form-check-input {
+          cursor: pointer;
         }
       `}</style>
     </Container>

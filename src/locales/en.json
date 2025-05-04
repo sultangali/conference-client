@@ -238,7 +238,7 @@
     },
     "ul3": {
       "title": "3. Submission Process",
-      "li1": "Abstracts must be uploaded through the participant’s personal account on the conference platform.",
+      "li1": "Abstracts must be uploaded through the participant's personal account on the conference platform.",
       "li2": "After submission, authors will receive a notification regarding the review status.",
       "li3": "If revisions are required, authors will be given a limited time to make changes and re-upload the file."
     },
@@ -261,6 +261,18 @@
   },
   "moderator": {
     "title": "Moderator",
+    "articles": "articles",
+    "summary": {
+      "approved": "Approved",
+      "process": "In Process",
+      "denied": "Denied", 
+      "inProcess": "Revision Required"
+    },
+    "filters": {
+      "bySection": "By Section",
+      "byReceipt": "By Receipt",
+      "byStatus": "By Status"
+    },
     "article": {
       "plname": "Article Title",
       "plauthorfio": "Author's Full Name",
@@ -274,7 +286,10 @@
       "file": "File",
       "action": "Actions",
       "download": "Download",
-      "notfoundfile": "No file"
+      "notfoundfile": "No file",
+      "receipt": "Receipt",
+      "downloadReceipt": "Download receipt",
+      "receiptStatus": "Receipt status"
     }
   },
   "sections": {
@@ -444,7 +459,8 @@
       "article": "My Article",
       "coauthors": "Co-authors",
       "timeline": "Timeline",
-      "accommodation": "Accommodation"
+      "accommodation": "Accommodation",
+      "receipt": "Payment Information"
     },
     "error": "Error: ",
     "isdeadline": "Deadline has passed!",
@@ -569,6 +585,24 @@
     "l7": "- Hotel complex «Metelitsa»",
     "l8": "- Hotel complex «ASTIKA»",
     "l9": "- Hotel «Senator Hotel»"
-}
-
+},
+"receipt": {
+    "title": "Payment Information",
+    "upload": "Upload Receipt",
+    "download": "Download Receipt", 
+    "submit": "Submit",
+    "uploading": "Loading...",
+    "success": "Receipt successfully uploaded",
+    "error": "Error uploading receipt",
+    "invalid": "Invalid file format",
+    "required": "Required field",
+    "uploadSuccess": "Receipt successfully uploaded",
+    "uploadError": "Error uploading receipt",
+    "status": {
+      "not_uploaded": "Receipt not attached",
+      "pending": "Receipt under review",
+      "approved": "Payment confirmed",
+      "rejected": "Payment not confirmed"
+    }
+  }
 }
