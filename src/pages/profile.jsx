@@ -390,7 +390,7 @@ function MyArticle({ userData, role }) {
     section: article?.section || '',
     file: null
   });
-  const deadline = moment("2025-04-01T00:00:00");
+  const deadline = moment("2025-04-04T00:00:00");
   const { t } = useTranslation();
   const sectionName = (section) => {
     switch (section) {
