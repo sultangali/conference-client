@@ -73,7 +73,7 @@ export const Header = () => {
               <Nav.Link href="/participants" ><Button  className="cnf-nav-link">{t('header.participate')}</Button></Nav.Link>
               <Nav.Link href="/#orgcommittee" ><Button  className="cnf-nav-link">{t('header.commited')}</Button></Nav.Link>
               <Nav.Link href="/details" ><Button  className="cnf-nav-link">{t('header.details')}</Button></Nav.Link>
-              <Nav.Link href="/sponsors" ><Button  className="cnf-nav-link">{t('header.sponsors')}</Button></Nav.Link>
+              <Nav.Link href="/program" ><Button  className="cnf-nav-link">{t('header.sponsors')}</Button></Nav.Link>
               <Nav.Link>
               <Dropdown >
                 <Dropdown.Toggle variant="primary" className="cnf-nav-link" id="dropdown-basic">
