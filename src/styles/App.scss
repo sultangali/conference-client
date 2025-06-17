@@ -548,3 +548,15 @@ $theme-colors: (
   color:white;
   font-weight: 700;
 }
+
+.program-download-btn {
+  border: 1px solid #0D47A1;
+  color: #FFFFFF;
+  background-color: #1168eb;
+  transition: 0.5s;
+}
+
+.program-download-btn:hover {
+  background-color: #FFFFFF;
+   color: #1168eb;
+}

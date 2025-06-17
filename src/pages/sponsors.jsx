@@ -46,7 +46,10 @@ export const Sponsors = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button variant="primary">{t('sponsors.download')}</Button>
+                <Button variant="primary program-download-btn" style={{
+                    borderRadius: '1px',
+
+                }}>{t('sponsors.download')}</Button>
               </a>
             </div>
 
