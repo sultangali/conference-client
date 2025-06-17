@@ -12,7 +12,7 @@
     "logout": "Logout",
     "language": "Language",
     "details": "Payment method",
-    "sponsors": "Sponsors"
+    "sponsors": "Program"
   },
   "main": {
     "view1": {
@@ -570,7 +570,7 @@
 
   },
   "sponsors": {
-    "title": "Sponsors",
+    "title": "Conference program",
     "p1": "At the moment, there is no information about sponsors. Stay tuned for updates."
   },
   "accommodation": {
