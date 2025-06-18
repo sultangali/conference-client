@@ -27,6 +27,19 @@ import { useTranslation } from "react-i18next";
 const Main = () => {
     const navigate = useNavigate();
     const { t } = useTranslation()
+    const [showAttention, setShowAttention] = useState(false);
+
+    // Эффект для периодического привлечения внимания к кнопке
+    useEffect(() => {
+        const attentionInterval = setInterval(() => {
+            setShowAttention(true);
+            setTimeout(() => setShowAttention(false), 1000); // Показываем анимацию на 1 секунду
+        }, 8000); // Повторяем каждые 8 секунд
+
+        // Очищаем интервал при размонтировании компонента
+        return () => clearInterval(attentionInterval);
+    }, []);
+
     return (
         <>
             <Container fluid
@@ -45,7 +58,16 @@ const Main = () => {
                                 <Col md={12} lg={12} xs={12} style={{ margin: '12px auto' }}><GeoAlt size={42} color="#0D47A1" />&nbsp;&nbsp;{t('main.view1.conference_location')}</Col>
                             </Row>
 
-                            <Button onClick={() => { navigate('/registration'); }} className="main-click-btn">{t('main.view1.register_button')}</Button>
+                            <Button 
+                                onClick={() => { navigate('/certificates'); }} 
+                                className={`main-click-btn ${showAttention ? 'attention' : ''}`}
+                                style={{
+                                    borderRadius: '1px',
+                                   
+                                }}
+                            >
+                                {t('certificates.title')}
+                            </Button>
                         </Col>
                     </Row>
                 </Container>

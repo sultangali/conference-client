@@ -66,7 +66,7 @@ export const Header = () => {
               {userData?.role === "moderator" && <Nav.Link href="/moderator"><span className="moderator">M</span></Nav.Link>}
             </Nav>
             <Nav >
-              <Nav.Link href="/#arrows" ><Button  className="cnf-nav-link">{t('header.arrow')}</Button></Nav.Link>
+              {/* <Nav.Link href="/#arrows" ><Button  className="cnf-nav-link">{t('header.arrow')}</Button></Nav.Link> */}
               <Nav.Link href="/criterion" ><Button  className="cnf-nav-link">{t('header.criterion')}</Button></Nav.Link>
               {/* <Nav.Link href="/#format" ><Button  className="cnf-nav-link">{t('header.format')}</Button></Nav.Link> */}
               <Nav.Link href="/#sections" ><Button  className="cnf-nav-link">{t('header.napravlenia')}</Button></Nav.Link>
@@ -74,6 +74,7 @@ export const Header = () => {
               <Nav.Link href="/#orgcommittee" ><Button  className="cnf-nav-link">{t('header.commited')}</Button></Nav.Link>
               <Nav.Link href="/details" ><Button  className="cnf-nav-link">{t('header.details')}</Button></Nav.Link>
               <Nav.Link href="/program" ><Button  className="cnf-nav-link">{t('header.sponsors')}</Button></Nav.Link>
+              <Nav.Link href="/certificates" ><Button  className="cnf-nav-link">{t('certificates.title')}</Button></Nav.Link>
               <Nav.Link>
               <Dropdown >
                 <Dropdown.Toggle variant="primary" className="cnf-nav-link" id="dropdown-basic">

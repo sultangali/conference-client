@@ -7,4 +7,6 @@ import {ModeratorDashboard} from "./ModeratorDashboard.jsx";
 import {Criterion} from './criterion.jsx'
 import { Details } from "./details.jsx";
 import { Sponsors } from "./sponsors.jsx";
-export { Main, Login, Criterion, Details, Profile, Sponsors, Registration, ParticipantList, ModeratorDashboard }
+import { Certificates } from './certificates.jsx'
+import { SectionDetails } from './sectionDetails.jsx'
+export { Main, Login, Criterion, Details, Profile, Sponsors, Registration, ParticipantList, ModeratorDashboard, Certificates, SectionDetails }

@@ -30,6 +30,8 @@ function App() {
         <Route path="/criterion" element={<><components.Header /><pages.Criterion /></>} />
         <Route path="/details" element={<><components.Header /><pages.Details /></>} />
         <Route path="/program" element={<><components.Header /><pages.Sponsors /></>} />
+        <Route path="/certificates" element={<><components.Header /><pages.Certificates /><components.Footer/></>} />
+        <Route path="/section/:sectionId" element={<><components.Header /><pages.SectionDetails /><components.Footer/></>} />
       </Routes>
     </>
   )

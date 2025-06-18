@@ -61,9 +61,9 @@
     "view4": {
       "title": "Main Areas of the Conference",
       "card": {
-        "1": "Mathematical modeling (physics, chemistry, biology, economics)",
+        "1": "Mathematical modeling (physics, chemistry, biology)",
         "2": "Current issues in mathematics",
-        "3": "Artificial intelligence and machine learning (data processing, AI applications)",
+        "3": "Artificial intelligence and machine learning",
         "4": "Applied mechanics and robotics",
         "5": "Teaching methodology for natural sciences",
         "6": "Problems of translating scientific terminology"
@@ -605,5 +605,18 @@
       "approved": "Payment confirmed",
       "rejected": "Payment not confirmed"
     }
+  },
+  "certificates": {
+    "title": "Certificates",
+    "secretary": "Technical Secretary:",
+    "sections": "Conference Sections",
+    "more": "More →",
+    "section": "List of participants in the section",
+    "fio": "Participant's full name",
+    "download": "Download",
+    "search": "Search by name...",
+    "contact": "Contact information",
+    "secretary1": "Technical Secretary:",
+    "back": "← Back to sections"
   }
 }
